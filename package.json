@@ -2,15 +2,20 @@
 	"name": "gatsby-starter-default",
 	"description": "Gatsby default starter",
 	"version": "1.0.0",
-	"author": "Kyle Mathews <mathews.kyle@gmail.com>",
+	"author": "Ryan Basmajian",
 	"dependencies": {
-		"gatsby": "^1.9.247",
-		"gatsby-link": "^1.6.40",
+		"gatsby": "latest",
+		"gatsby-link": "latest",
 		"gatsby-plugin-react-helmet": "^2.0.10",
+		"netlify-cms": "^1.9.2",
 		"ramda": "^0.25.0",
-		"react-helmet": "^5.2.0"
+		"react-helmet": "^5.2.0",
+		"semantic-ui-css": "^2.3.2",
+		"semantic-ui-react": "^0.81.1"
 	},
-	"keywords": ["gatsby"],
+	"keywords": [
+		"gatsby"
+	],
 	"license": "MIT",
 	"scripts": {
 		"build": "gatsby build",
@@ -24,6 +29,8 @@
 		"@types/react": "^16.3.16",
 		"@types/react-dom": "^16.0.6",
 		"@types/react-router-dom": "^4.2.7",
+		"gatsby-plugin-typescript": "^1.4.20",
+		"gatsby-plugin-typography": "^1.7.19",
 		"jest": "^23.1.0",
 		"prettier": "^1.12.0",
 		"tslint": "^5.10.0",
