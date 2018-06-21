@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Link from 'gatsby-link';
 import * as contentful from 'contentful';
-import { map } from 'ramda';
+import { derivePosts } from '../utils/';
 
 interface Post {
   title: string;
@@ -27,8 +27,9 @@ class Blog extends React.Component<any, BlogState> {
 			})
 			.getEntries()
 			.then(({ items }) => {
+        console.log(items);
         this.setState({
-          posts: map(post => ({ title: post.fields.title, content: post.fields.content }), items) 
+          posts: derivePosts(items) 
         })
       });
 	}
