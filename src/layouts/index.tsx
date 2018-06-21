@@ -7,7 +7,7 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 
 
-const Layout = ({ children, data }) => (
+const Layout = ({ children, data, location}) => (
 	<div>
  		<Helmet
 			title={data.site.siteMetadata.title}
@@ -20,7 +20,7 @@ const Layout = ({ children, data }) => (
 				href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
 			/>
 		</Helmet>
-    <Navbar />
+    <Navbar location={location}/>
 		<Header siteTitle={data.site.siteMetadata.title} />
 		<div
 			style={{
