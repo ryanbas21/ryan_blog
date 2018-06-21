@@ -40,6 +40,7 @@ const Cards: React.SFC<CardProps> = function CardsComp(props) {
 						}}
 					/>
 				</Card.Description>
+      <Card.Extra><Tags tags={tags}/></Card.Extra>
 			</Card.Content>
 			<Card.Content extra>
 				<Tag tags={tags} />
