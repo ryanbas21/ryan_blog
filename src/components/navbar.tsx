@@ -14,7 +14,7 @@ export default class Navbar extends React.Component<any, NavbarState> {
 	constructor(props) {
 		super(props);
 		this.state = {
-      activeItem: '/',
+      activeItem: props.location.pathname,
 			pages: [
 				{
 					name: 'Home',
