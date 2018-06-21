@@ -1,24 +1,24 @@
 import * as React from 'react';
 import Link from 'gatsby-link';
 import * as contentful from 'contentful';
+import Card from '../components/Card';
 import { derivePosts } from '../utils/';
 
 interface Post {
-  title: string;
-  content: string;
-  media?: any;
+	title: string;
+	content: string;
+	media?: any;
 }
 interface BlogState {
-  posts: Post[];
+	posts: Post[];
 }
 class Blog extends React.Component<any, BlogState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: []
-    }
-    
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			posts: []
+		};
+	}
 	componentDidMount() {
 		contentful
 			.createClient({
@@ -27,18 +27,21 @@ class Blog extends React.Component<any, BlogState> {
 			})
 			.getEntries()
 			.then(({ items }) => {
-        console.log(items);
-        this.setState({
-          posts: derivePosts(items) 
-        })
-      });
+				this.setState({
+					posts: derivePosts(items)
+				});
+			});
 	}
 
 	render() {
-    const { posts } = this.state;
+		const { posts } = this.state;
 		return (
 			<div>
-          {posts.map(post => <div key={post.title}>{post.title}</div>)}
+				{posts.map((post) => (
+					<div key={post.title}>
+						<Card date={post.date} title={post.title} content={post.content} media={post.media} />
+					</div>
+				))}
 			</div>
 		);
 	}

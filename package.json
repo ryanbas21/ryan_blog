@@ -4,25 +4,25 @@
 	"version": "1.0.0",
 	"author": "Ryan Basmajian",
 	"dependencies": {
+		"codacy-coverage": "^3.0.0",
 		"contentful": "^6.1.1",
 		"gatsby": "^1.9.247",
 		"gatsby-link": "^1.6.40",
-		"codacy-coverage": "^3.0.0",
 		"gatsby-plugin-react-helmet": "^2.0.10",
+		"moment": "^2.22.2",
 		"netlify-cms": "^1.9.2",
 		"ramda": "^0.25.0",
 		"react-helmet": "^5.2.0",
 		"semantic-ui-css": "^2.3.2",
 		"semantic-ui-react": "^0.81.1"
 	},
-	"keywords": [
-		"gatsby"
-	],
+	"keywords": ["gatsby"],
 	"license": "MIT",
 	"scripts": {
 		"build": "gatsby build",
 		"develop": "gatsby develop",
-		"test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage --accountToken PjZdGT9mP8cBpb5x5GVy --username ryanbas21 --projectName eric_blog",
+		"test-with-coverage":
+			"jest --coverage && cat ./coverage/lcov.info | codacy-coverage --accountToken PjZdGT9mP8cBpb5x5GVy --username ryanbas21 --projectName eric_blog",
 		"format": "prettier --write 'src/**/*.js'",
 		"test": "jest",
 		"test:watch": "jest --watchAll"
