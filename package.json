@@ -13,16 +13,19 @@
 		"netlify-cms": "^1.9.2",
 		"ramda": "^0.25.0",
 		"react-helmet": "^5.2.0",
+		"redux-observable": "^1.0.0",
+		"rxjs": "^6.2.1",
 		"semantic-ui-css": "^2.3.2",
 		"semantic-ui-react": "^0.81.1"
 	},
-	"keywords": ["gatsby"],
+	"keywords": [
+		"gatsby"
+	],
 	"license": "MIT",
 	"scripts": {
 		"build": "gatsby build",
 		"develop": "gatsby develop",
-		"test-with-coverage":
-			"jest --coverage && cat ./coverage/lcov.info | codacy-coverage --accountToken PjZdGT9mP8cBpb5x5GVy --username ryanbas21 --projectName eric_blog",
+		"test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage --accountToken PjZdGT9mP8cBpb5x5GVy --username ryanbas21 --projectName eric_blog",
 		"format": "prettier --write 'src/**/*.js'",
 		"test": "jest",
 		"test:watch": "jest --watchAll"
