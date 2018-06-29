@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Header from '../components/header';
+import Search from '../components/search';
 import Navbar from '../components/navbar';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
