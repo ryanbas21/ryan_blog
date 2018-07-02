@@ -1,15 +1,17 @@
 import React from 'react';
 import contentful from '../../utils/contentful-client';
-import { prop, toLower } from 'ramda';
+import { length, prop, toLower } from 'ramda';
+import { push } from "gatsby-link"
 import { connect } from 'react-redux';
 import { Search } from 'semantic-ui-react';
-import { filterTitles } from '../../utils/index';
+import { toSlug, filterTitles, resultsArray } from '../../utils/index';
 
 interface SearchProps {
   posts: any[];
 }
 interface SearchState {
 	filtered: any[];
+  searchQuery: string;
 }
 
 const style = {
@@ -20,25 +22,35 @@ class SearchComponent extends React.Component<SearchProps, SearchState> {
 	constructor(props) {
 		super(props);
 		this.state = {
-			filtered: []
+			filtered: [],
+      searchQuery: ''
 		};
+    this.onResultSelect = this.onResultSelect.bind(this);
 		this.search = this.search.bind(this);
 	}
+  onResultSelect(e: React.MouseEvent<any>, { result }) {
+    const { title } = result;
+    this.setState({ searchQuery: '', filtered: [] });
+    return push('/' + toSlug(title))
+  }
 	search(event: React.FormEvent<any>) {
 		const query = toLower(event.currentTarget.value);
-		return this.setState({ filtered: filterTitles(query, this.props.posts) });
+    const { posts } = this.props
+		return this.setState({ searchQuery: query, filtered: filterTitles(query, posts) });
 	}
 
 	render(): JSX.Element {
-    console.log(this.props.posts);
 		return (
 			<Search
+        selectFirstResult
+        value={this.state.searchQuery}
 				style={style}
-				results={this.state.filtered}
+				results={resultsArray(this.state.filtered)}
 				icon="search"
 				placeholder="Search Articles"
 				type="text"
 				onSearchChange={this.search}
+        onResultSelect={this.onResultSelect}
 			/>
 		);
 	}

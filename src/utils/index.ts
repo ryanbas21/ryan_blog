@@ -16,20 +16,19 @@ export const inc = add(1);
 export const derivePosts = map((post) => ({
 	title: post.fields.title,
 	content: post.fields.content,
-	date: moment(post.sys.createdAt).format('lll')
+	date: moment(post.sys.createdAt).format('lll'),
+  id: post.sys.id
 }));
 
-export const titlesArray = map(
-	compose(
-		prop('title'),
-	)
-);
+export const titlesArray = map(prop('title'));
 export const trace = (msg) => (val) => {
 	console.log(`${msg}  ${val}`);
 	return val;
 };
 
-export const inTitle = (query) => filter((title) => title.includes(query));
+export const inTitle = (query) => filter((title) => {
+  return toLower(title).includes(toLower(query));
+})
 
 export const filterTitles = curry((query, state) =>
 	compose(
@@ -43,3 +42,5 @@ export const toSlug = compose(
 	join('-'),
 	split(' ')
 );
+
+export const resultsArray = map(title => ({ title, description: '' }));
