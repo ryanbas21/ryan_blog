@@ -7,6 +7,7 @@ import { derivePosts } from '../utils/';
 
 interface Post {
 	title: string;
+  id: string;
 	content: string;
 	media?: any;
   date: string;
@@ -37,6 +38,7 @@ class Blog extends React.Component<any, BlogState> {
 				{posts.map((post) => (
 					<div key={post.title}>
 						<Cards
+              id={post.id}
 							style={style}
 							date={post.date}
 							title={post.title}

@@ -5,6 +5,7 @@ import { toSlug } from '../../utils/';
 import contentful from '../../utils/contentful-client';
 
 interface CardProps {
+  id: string;
 	title: string;
 	date: string;
 	media?: any;
@@ -19,7 +20,7 @@ class Cards extends React.Component<CardProps, CardState> {
 		this.state = {};
 	}
 	componentDidMount() {
-		contentful.getEntries().then((a) => console.log(a));
+		contentful.getEntries();
 	}
 	render() {
 		return (
@@ -27,7 +28,7 @@ class Cards extends React.Component<CardProps, CardState> {
 				fluid
 				style={this.props.style}
 				as={Link}
-				to={toSlug(this.props.title)}>
+				to={this.props.id}>
 				{this.props.media ? <Image src={this.props.media} /> : null}
 				<Card.Content>
 					<Card.Header>{this.props.title}</Card.Header>
