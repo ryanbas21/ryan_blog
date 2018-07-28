@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import Link from 'gatsby-link';
 import { length, slice } from 'ramda';
-// import Tag from '../../components/tags/'../tags/;
+import Tag from '../../components/tags/'../tags/;
 
 interface CardProps {
 	id: string;
@@ -16,7 +16,7 @@ interface CardProps {
 }
 
 const Cards: React.SFC<CardProps> = function CardsComp(props) {
-	const { content } = props;
+	const { content, tags } = props;
 	const contentLength =
 		length(content) > 100 ? slice(0, 100, content) : 'Click to Read';
 	return (
@@ -32,6 +32,7 @@ const Cards: React.SFC<CardProps> = function CardsComp(props) {
 						}}
 					/>
 				</Card.Description>
+      <Card.Extra><Tags tags={tags}/></Card.Extra>
 			</Card.Content>
 		</Card>
 	);
