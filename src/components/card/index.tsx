@@ -32,7 +32,10 @@ const Cards: React.SFC<CardProps> = function CardsComp(props) {
 						}}
 					/>
 				</Card.Description>
-      <Card.Extra><Tags tags={tags}/></Card.Extra>
+      <Card.Extra>
+          <Tags tags={tags} />
+      </Card.Extra>
+
 			</Card.Content>
 		</Card>
 	);
