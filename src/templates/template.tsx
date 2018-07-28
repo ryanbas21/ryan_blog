@@ -13,7 +13,6 @@ const BlogPost: React.SFC<BlogPostProps> = function Template(props) {
 	const {
 		data: { markdownRemark }
 	} = props;
-	console.log(props);
 	return (
 		<div>
 			<h2>{markdownRemark.frontmatter.title} </h2>

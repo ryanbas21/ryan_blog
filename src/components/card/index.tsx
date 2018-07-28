@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import Link from 'gatsby-link';
 import { length, slice } from 'ramda';
+// import Tag from '../../components/tags/'../tags/;
 
 interface CardProps {
 	id: string;
@@ -10,36 +11,30 @@ interface CardProps {
 	date: string;
 	media?: any;
 	content: string;
+	tags: string;
 	style: { margin: number };
 }
-interface CardState {}
 
-class Cards extends React.Component<CardProps, CardState> {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
-	render() {
-		const { content } = this.props;
-		let contentLength =
-			length(content) > 100 ? slice(0, 100, content) : 'Click to Read';
-		return (
-			<Card fluid style={this.props.style} as={Link} to={this.props.path}>
-				{this.props.media ? <Image src={this.props.media} /> : null}
-				<Card.Content>
-					<Card.Header>{this.props.title}</Card.Header>
-					<Card.Meta>{this.props.date}</Card.Meta>
-					<Card.Description>
-						<div
-							dangerouslySetInnerHTML={{
-								__html: contentLength + '...'
-							}}
-						/>
-					</Card.Description>
-				</Card.Content>
-			</Card>
-		);
-	}
-}
+const Cards: React.SFC<CardProps> = function CardsComp(props) {
+	const { content } = props;
+	const contentLength =
+		length(content) > 100 ? slice(0, 100, content) : 'Click to Read';
+	return (
+		<Card fluid style={props.style} as={Link} to={props.path}>
+			{props.media ? <Image src={props.media} /> : null}
+			<Card.Content>
+				<Card.Header>{props.title}</Card.Header>
+				<Card.Meta>{props.date}</Card.Meta>
+				<Card.Description>
+					<div
+						dangerouslySetInnerHTML={{
+							__html: contentLength + '...'
+						}}
+					/>
+				</Card.Description>
+			</Card.Content>
+		</Card>
+	);
+};
 
 export default Cards;
