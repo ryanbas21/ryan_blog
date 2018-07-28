@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import Link from 'gatsby-link';
 import { length, slice } from 'ramda';
-import contentful from '../../utils/contentful-client';
 
 interface CardProps {
 	id: string;
@@ -19,9 +18,6 @@ class Cards extends React.Component<CardProps, CardState> {
 	constructor(props) {
 		super(props);
 		this.state = {};
-	}
-	componentDidMount() {
-		contentful.getEntries();
 	}
 	render() {
 		const { content } = this.props;

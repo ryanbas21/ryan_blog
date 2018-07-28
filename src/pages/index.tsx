@@ -27,10 +27,9 @@ interface IndexProps {
 	};
 }
 const Index: React.SFC<IndexProps> = function IndexComponent(props) {
-	console.log(props);
 	return (
 		<div>
-      <About />
+			<About />
 			<h1>Some recent posts</h1>
 			{map(
 				({ node }) => (
