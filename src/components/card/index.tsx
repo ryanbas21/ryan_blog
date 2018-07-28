@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import Link from 'gatsby-link';
 import { length, slice } from 'ramda';
+import Tag from '../tags';
 
 interface CardProps {
 	id: string;
@@ -10,6 +11,7 @@ interface CardProps {
 	date: string;
 	media?: any;
 	content: string;
+	tags: string;
 	style: { margin: number };
 }
 interface CardState {}
@@ -36,6 +38,9 @@ class Cards extends React.Component<CardProps, CardState> {
 							}}
 						/>
 					</Card.Description>
+					<Card.Content extra>
+						<Tag tags={this.props.tags} />
+					</Card.Content>
 				</Card.Content>
 			</Card>
 		);

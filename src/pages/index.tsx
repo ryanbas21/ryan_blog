@@ -39,6 +39,7 @@ const Index: React.SFC<IndexProps> = function IndexComponent(props) {
 						title={node.frontmatter.title}
 						date={node.frontmatter.date}
 						content={node.html}
+						tags={node.frontmatter.tags}
 					/>
 				),
 				props.data.allMarkdownRemark.edges
@@ -61,6 +62,7 @@ export const pageQuery = graphql`
 						path
 						title
 						date
+						tags
 					}
 				}
 			}

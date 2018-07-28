@@ -2,6 +2,7 @@
 path: "/blog/intro-to-fp"
 date: "2018-06-15"
 title: "Intro to Functional Programming"
+tags: "Functional Programming, Currying, Partial Application, Pure Functions" 
 ---
 
 Functional programming has become more and more relevant in todays web. At Paypal, we’ve begun to embrace it, and are already seeing benefits in a number of ways. Now while, we’ve begun diving into some more “advanced” topic like lenses to handle our deeply nested data structures, its important that we have an understanding of the fundamentals.
