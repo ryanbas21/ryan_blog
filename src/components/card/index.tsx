@@ -1,10 +1,11 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import Link from 'gatsby-link';
-import { toSlug } from '../../utils/';
-import contentful from '../../utils/contentful-client';
+import { length, slice } from 'ramda';
 
 interface CardProps {
+	id: string;
+	path: string;
 	title: string;
 	date: string;
 	media?: any;
@@ -18,22 +19,22 @@ class Cards extends React.Component<CardProps, CardState> {
 		super(props);
 		this.state = {};
 	}
-	componentDidMount() {
-		contentful.getEntries().then((a) => console.log(a));
-	}
 	render() {
+		const { content } = this.props;
+		let contentLength =
+			length(content) > 100 ? slice(0, 100, content) : 'Click to Read';
 		return (
-			<Card
-				fluid
-				style={this.props.style}
-				as={Link}
-				to={toSlug(this.props.title)}>
+			<Card fluid style={this.props.style} as={Link} to={this.props.path}>
 				{this.props.media ? <Image src={this.props.media} /> : null}
 				<Card.Content>
 					<Card.Header>{this.props.title}</Card.Header>
 					<Card.Meta>{this.props.date}</Card.Meta>
 					<Card.Description>
-						{this.props.content.slice(0, 100)}
+						<div
+							dangerouslySetInnerHTML={{
+								__html: contentLength + '...'
+							}}
+						/>
 					</Card.Description>
 				</Card.Content>
 			</Card>

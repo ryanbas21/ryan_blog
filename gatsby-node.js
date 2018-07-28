@@ -1,7 +1,34 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const { forEach, split, toLower, join, compose } = require('ramda');
+const path = require('path');
+const slash = require('slash');
 
- // You can delete this file if you're not using it
+exports.createPages = ({ graphql, boundActionCreators }) => {
+	const { createPage } = boundActionCreators;
+	return new Promise((resolve, reject) => {
+		graphql(`
+			{
+				allMarkdownRemark {
+					edges {
+						node {
+							html
+							frontmatter {
+								path
+								title
+								date
+							}
+						}
+					}
+				}
+			}
+		`).then((result) => {
+			const productTemplate = path.resolve(`src/templates/template.tsx`);
+			forEach(({ node }) => {
+				createPage({
+					path: node.frontmatter.path,
+					component: slash(productTemplate)
+				});
+			}, result.data.allMarkdownRemark.edges);
+			resolve();
+		});
+	});
+};
