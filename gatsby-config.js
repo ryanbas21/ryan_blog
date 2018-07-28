@@ -1,6 +1,17 @@
 module.exports = {
-  siteMetadata: {
-    title: 'Gatsby Default Starter',
-  },
-  plugins: ['gatsby-plugin-react-helmet'],
-}
+	siteMetadata: {
+		title: `Ryan's Blog`
+	},
+	plugins: [
+		`gatsby-plugin-typescript`,
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `pages`,
+				path: `${__dirname}/src/posts`,
+				name: 'markdown-pages'
+			}
+		},
+		`gatsby-transformer-remark`
+	]
+};
