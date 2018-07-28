@@ -4,6 +4,7 @@ import Link from 'gatsby-link'
 interface HeaderProps {
   siteTitle: string;
 }
+
 const Header: React.SFC<HeaderProps> = ({ siteTitle }) => (
   <div
     style={{
