@@ -3,6 +3,7 @@ module.exports = {
 		title: `Ryan's Blog`
 	},
 	plugins: [
+		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-typescript`,
 		{
 			resolve: `gatsby-source-filesystem`,
@@ -12,6 +13,12 @@ module.exports = {
 				name: 'markdown-pages'
 			}
 		},
-		`gatsby-transformer-remark`
+		`gatsby-transformer-remark`,
+		{
+			resolve: `gatsby-plugin-typography`,
+			options: {
+				pathToConfigModule: `src/utils/typography`
+			}
+		}
 	]
 };

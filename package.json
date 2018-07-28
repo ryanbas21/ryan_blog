@@ -11,13 +11,13 @@
 		"gatsby-source-filesystem": "^1.5.39",
 		"gatsby-transformer-remark": "^1.7.44",
 		"moment": "^2.22.2",
-		"netlify-cms": "^1.9.2",
 		"ramda": "^0.25.0",
 		"react-helmet": "^5.2.0",
-		"react-redux": "latest",
 		"semantic-ui-css": "^2.3.2",
 		"semantic-ui-react": "^0.81.1",
-		"slash": "^2.0.0"
+		"slash": "^2.0.0",
+		"typography": "^0.16.17",
+		"typography-theme-grand-view": "^0.15.10"
 	},
 	"keywords": [
 		"gatsby"
