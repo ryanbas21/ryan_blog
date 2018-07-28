@@ -1,6 +1,7 @@
 # Project dependencies
 tags
 tags.tmp
+tags.temp
 tags.lock
 .cache
 node_modules

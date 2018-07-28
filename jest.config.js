@@ -1,5 +1,7 @@
 module.exports = {
 	roots: ['<rootDir>/src'],
+  testURL: "http://localhost/",
+  testEnvironment: 'node',
 	transform: {
 		'^.+\\.tsx?$': 'ts-jest'
 	},
