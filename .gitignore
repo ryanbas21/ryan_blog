@@ -1,4 +1,7 @@
 # Project dependencies
+tags
+tags.tmp
+tags.lock
 .cache
 node_modules
 yarn-error.log

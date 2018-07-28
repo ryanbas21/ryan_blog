@@ -2,47 +2,33 @@ const { forEach, split, toLower, join, compose } = require('ramda');
 const path = require('path');
 const slash = require('slash');
 
-const toSlug = compose(
-	toLower,
-	join('-'),
-	split(' ')
-);
-
 exports.createPages = ({ graphql, boundActionCreators }) => {
 	const { createPage } = boundActionCreators;
 	return new Promise((resolve, reject) => {
-		graphql(
-			`
-				{
-					allContentfulBlogPost {
-						edges {
-							node {
-								id
+		graphql(`
+			{
+				allMarkdownRemark {
+					edges {
+						node {
+							html
+							frontmatter {
+								path
 								title
-								content {
-									content
-								}
-                date
+								date
 							}
 						}
 					}
 				}
-			`
-		).then((result) => {
-			if (result.errors) {
-				reject(result.errors);
 			}
-			const productTemplate = path.resolve(`src/features/blog/index.tsx`);
-			forEach((edge) => {
+		`).then((result) => {
+			const productTemplate = path.resolve(`src/templates/template.tsx`);
+			forEach(({ node }) => {
 				createPage({
-					path: `/` + edge.node.id,
-					component: slash(productTemplate),
-					context: {
-						id: edge.node.id
-					}
+					path: node.frontmatter.path,
+					component: slash(productTemplate)
 				});
-			}, result.data.allContentfulBlogPost.edges);
-      resolve();
+			}, result.data.allMarkdownRemark.edges);
+			resolve();
 		});
 	});
 };
