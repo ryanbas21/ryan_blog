@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import Link from 'gatsby-link';
 import { length, slice } from 'ramda';
-import Tag from '../tags';
+import { Tag } from '../tags/tag';
 
 interface CardProps {
 	id: string;
