@@ -6,6 +6,7 @@ import styles from './tag.module.css';
 interface TagProps {
 	tags: string[];
 }
+
 const Tag: React.SFC<TagProps> = ({ tags }) => (
 	<div className={styles.spacing}>
 		{map(
