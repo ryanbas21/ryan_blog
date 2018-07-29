@@ -33,7 +33,6 @@
 		"@types/react-redux": "^6.0.3",
 		"@types/react-router-dom": "^4.2.7",
 		"@types/redux": "^3.6.0",
-		"codacy-coverage": "^3.0.0",
 		"gatsby-plugin-typescript": "^1.4.20",
 		"gatsby-plugin-typography": "^1.7.19",
 		"husky": "^1.0.0-rc.13",
