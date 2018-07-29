@@ -1,1 +1,65 @@
-{}
+{
+	"/Users/RyanBas/Documents/web_development/eric_blog/src/components/blog-tags/index.tsx": {
+		"path":
+			"/Users/RyanBas/Documents/web_development/eric_blog/src/components/blog-tags/index.tsx",
+		"statementMap": {
+			"0": {
+				"start": { "line": 9, "column": 33 },
+				"end": { "line": 21, "column": 1 }
+			},
+			"1": {
+				"start": { "line": 10, "column": 1 },
+				"end": { "line": 20, "column": 7 }
+			},
+			"2": {
+				"start": { "line": 13, "column": 4 },
+				"end": { "line": 16, "column": 12 }
+			}
+		},
+		"fnMap": {
+			"0": {
+				"name": "(anonymous_0)",
+				"decl": {
+					"start": { "line": 9, "column": 33 },
+					"end": { "line": 9, "column": 34 }
+				},
+				"loc": {
+					"start": { "line": 10, "column": 1 },
+					"end": { "line": 20, "column": 7 }
+				}
+			},
+			"1": {
+				"name": "(anonymous_1)",
+				"decl": {
+					"start": { "line": 12, "column": 3 },
+					"end": { "line": 12, "column": 4 }
+				},
+				"loc": {
+					"start": { "line": 13, "column": 4 },
+					"end": { "line": 16, "column": 12 }
+				}
+			}
+		},
+		"branchMap": {},
+		"s": { "0": 1, "1": 1, "2": 2 },
+		"f": { "0": 1, "1": 2 },
+		"b": {}
+	},
+	"/Users/RyanBas/Documents/web_development/eric_blog/src/utils/style.mock.js": {
+		"path":
+			"/Users/RyanBas/Documents/web_development/eric_blog/src/utils/style.mock.js",
+		"statementMap": {
+			"0": {
+				"start": { "line": 1, "column": 0 },
+				"end": { "line": 1, "column": 20 }
+			}
+		},
+		"fnMap": {},
+		"branchMap": {},
+		"s": { "0": 1 },
+		"f": {},
+		"b": {},
+		"_coverageSchema": "332fd63041d2c1bcb487cc26dd0d5f7d97098a6c",
+		"hash": "d35e661debbfdab35d320a2ea15f3740f998cc16"
+	}
+}

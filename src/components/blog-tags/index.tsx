@@ -22,4 +22,3 @@ const Tag: React.SFC<TagProps> = ({ tags }) => (
 );
 
 export default Tag;
-
