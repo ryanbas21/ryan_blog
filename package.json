@@ -22,10 +22,8 @@
 	"scripts": {
 		"build": "gatsby build",
 		"develop": "gatsby develop",
-		"test-with-coverage":
-			"jest --coverage && cat ./coverage/lcov.info | codacy-coverage --accountToken PjZdGT9mP8cBpb5x5GVy --username ryanbas21 --projectName eric_blog",
 		"format": "prettier --write 'src/**/*.js'",
-		"test": "jest",
+		"test": "jest --coverage",
 		"test:watch": "jest --watchAll"
 	},
 	"devDependencies": {
