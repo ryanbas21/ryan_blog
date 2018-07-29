@@ -4,6 +4,7 @@ import Link from 'gatsby-link';
 import { length, slice } from 'ramda';
 import Tag from '../blog-tags';
 
+
 interface CardProps {
 	id: string;
 	path: string;
