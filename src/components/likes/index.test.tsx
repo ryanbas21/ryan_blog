@@ -4,7 +4,7 @@ import Likes from './';
 
 afterEach(cleanup);
 
-test('Should render Like button', () => {
+test.skip('Should render Like button', () => {
 	const { getByTestId, getByText } = render(<Likes />);
 	const likeButton = getByTestId('likes-button');
 	const totalLikes = getByText('0');
@@ -13,7 +13,7 @@ test('Should render Like button', () => {
 	expect(totalLikes.innerHTML).toBe('0');
 });
 
-test('Should Click Like Button and increment Likes', () => {
+test.skip('Should Click Like Button and increment Likes', () => {
 	const { getByText, getByTestId } = render(<Likes />);
 	const likeButton = getByTestId('likes-button');
 
@@ -21,7 +21,7 @@ test('Should Click Like Button and increment Likes', () => {
 	const totalLikes = getByText('1');
 });
 
-test('When Like is Clicked Heart should turn red', () => {
+test.skip('When Like is Clicked Heart should turn red', () => {
 	const { getByText, getByTestId } = render(<Likes />);
 	const likeButton = getByTestId('likes-button');
 
