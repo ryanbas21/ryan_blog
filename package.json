@@ -17,14 +17,13 @@
 		"typography": "^0.16.17",
 		"typography-theme-grand-view": "^0.15.10"
 	},
-	"keywords": [
-		"gatsby"
-	],
+	"keywords": ["gatsby"],
 	"license": "MIT",
 	"scripts": {
 		"build": "gatsby build",
 		"develop": "gatsby develop",
-		"test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage --accountToken PjZdGT9mP8cBpb5x5GVy --username ryanbas21 --projectName eric_blog",
+		"test-with-coverage":
+			"jest --coverage && cat ./coverage/lcov.info | codacy-coverage --accountToken PjZdGT9mP8cBpb5x5GVy --username ryanbas21 --projectName eric_blog",
 		"format": "prettier --write 'src/**/*.js'",
 		"test": "jest",
 		"test:watch": "jest --watchAll"
@@ -39,12 +38,23 @@
 		"codacy-coverage": "^3.0.0",
 		"gatsby-plugin-typescript": "^1.4.20",
 		"gatsby-plugin-typography": "^1.7.19",
+		"husky": "^1.0.0-rc.13",
 		"jest": "^23.1.0",
+		"lint-staged": "^7.2.0",
 		"prettier": "^1.12.0",
+		"react-testing-library": "^4.1.5",
 		"ts-jest": "^22.4.6",
 		"tslint": "^5.10.0",
 		"tslint-config-prettier": "^1.13.0",
 		"typescript": "^2.9.1"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{ts, tsx, tsx, js,json,css,md}": ["prettier --write", "git add"]
 	},
 	"repository": {
 		"type": "git",
