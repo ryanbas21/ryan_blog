@@ -24,7 +24,7 @@
 		"develop": "gatsby develop",
 		"format": "prettier --write 'src/**/*.js'",
 		"test": "jest --coverage",
-		"test:watch": "jest --watchAll"
+		"test:watch": "jest --watchAll --silent"
 	},
 	"devDependencies": {
 		"@types/jest": "^23.3.1",
@@ -54,7 +54,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.{ts, tsx, js,json,css,md}": ["prettier --write", "git add"]
+		"*.{ts, tsx, js,json,md}": ["prettier --write", "git add"]
 	},
 	"repository": {
 		"type": "git",
