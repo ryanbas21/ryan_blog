@@ -23,7 +23,7 @@
 		"build": "gatsby build",
 		"develop": "gatsby develop",
 		"format": "prettier --write 'src/**/*.js'",
-		"test": "jest --coverage",
+		"test": "jest --coverage && codecov",
 		"test:watch": "jest --watchAll"
 	},
 	"devDependencies": {
@@ -33,6 +33,7 @@
 		"@types/react-redux": "^6.0.3",
 		"@types/react-router-dom": "^4.2.7",
 		"@types/redux": "^3.6.0",
+		"codecov": "latest",
 		"gatsby-plugin-typescript": "^1.4.20",
 		"gatsby-plugin-typography": "^1.7.19",
 		"history": "^4.7.2",
