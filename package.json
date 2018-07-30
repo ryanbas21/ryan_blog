@@ -24,8 +24,7 @@
 		"develop": "gatsby develop",
 		"format": "prettier --write 'src/**/*.js'",
 		"test:watch": "jest --watchAll --silent",
-		"test": "jest --coverage && codecov",
-		"test:watch": "jest --watchAll"
+		"test": "jest --coverage && codecov"
 	},
 	"devDependencies": {
 		"@types/jest": "^23.3.1",
