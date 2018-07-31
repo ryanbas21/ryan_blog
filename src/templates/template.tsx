@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Comments from '../components/comment';
+import Likes from '../components/likes';
 import styles from './template.module.css';
 
 interface BlogPostProps {
@@ -17,6 +18,7 @@ const BlogPost: React.SFC<BlogPostProps> = function Template(props) {
 	} = props;
 	return (
 		<div>
+			<Likes />
 			<h2>{markdownRemark.frontmatter.title} </h2>
 			<i>{markdownRemark.frontmatter.date}</i>
 			<div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
