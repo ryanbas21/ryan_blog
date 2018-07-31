@@ -1,21 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1532880371613" clover="3.2.0">
-  <project timestamp="1532880371613" name="All files">
-    <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="6" coveredelements="6" complexity="0" loc="4" ncloc="4" packages="2" files="2" classes="2">
+<coverage generated="1533000578726" clover="3.2.0">
+  <project timestamp="1533000578726" name="All files">
+    <metrics statements="34" coveredstatements="34" conditionals="5" coveredconditionals="3" methods="16" coveredmethods="16" elements="55" coveredelements="53" complexity="0" loc="34" ncloc="34" packages="6" files="9" classes="9">
+      <package name="components">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="about.tsx" path="/Users/RyanBas/Documents/web_development/eric_blog/src/components/about.tsx">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="5" count="1" type="stmt"/>
+        </file>
+      </package>
       <package name="components.blog-tags">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <file name="index.tsx" path="/Users/RyanBas/Documents/web_development/eric_blog/src/components/blog-tags/index.tsx">
           <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-          <line num="9" count="1" type="stmt"/>
-          <line num="10" count="1" type="stmt"/>
-          <line num="13" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="14" count="4" type="stmt"/>
+        </file>
+      </package>
+      <package name="components.card">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <file name="index.tsx" path="/Users/RyanBas/Documents/web_development/eric_blog/src/components/card/index.tsx">
+          <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="20" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="21" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="components.comment">
+        <metrics statements="20" coveredstatements="20" conditionals="1" coveredconditionals="0" methods="8" coveredmethods="8"/>
+        <file name="commentHeader.tsx" path="/Users/RyanBas/Documents/web_development/eric_blog/src/components/comment/commentHeader.tsx">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="5" count="4" type="stmt"/>
+        </file>
+        <file name="createComment.tsx" path="/Users/RyanBas/Documents/web_development/eric_blog/src/components/comment/createComment.tsx">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="8" count="2" type="stmt"/>
+          <line num="9" count="5" type="stmt"/>
+        </file>
+        <file name="currentComments.tsx" path="/Users/RyanBas/Documents/web_development/eric_blog/src/components/comment/currentComments.tsx">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+        </file>
+        <file name="index.tsx" path="/Users/RyanBas/Documents/web_development/eric_blog/src/components/comment/index.tsx">
+          <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="0" methods="5" coveredmethods="5"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="30" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="35" count="1" type="stmt"/>
+          <line num="39" count="1" type="cond" truecount="0" falsecount="1"/>
+          <line num="40" count="1" type="stmt"/>
+          <line num="41" count="1" type="stmt"/>
+          <line num="42" count="1" type="stmt"/>
+          <line num="52" count="3" type="stmt"/>
+          <line num="53" count="3" type="stmt"/>
+          <line num="54" count="3" type="stmt"/>
+          <line num="59" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="components.likes">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <file name="index.tsx" path="/Users/RyanBas/Documents/web_development/eric_blog/src/components/likes/index.tsx">
+          <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+          <line num="10" count="3" type="stmt"/>
+          <line num="11" count="3" type="stmt"/>
+          <line num="14" count="3" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="20" count="5" type="stmt"/>
         </file>
       </package>
       <package name="utils">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <file name="style.mock.js" path="/Users/RyanBas/Documents/web_development/eric_blog/src/utils/style.mock.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="1" type="stmt"/>
+          <line num="1" count="2" type="stmt"/>
         </file>
       </package>
     </metrics>

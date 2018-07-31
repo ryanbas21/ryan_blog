@@ -9,7 +9,6 @@ interface CardProps {
 	path: string;
 	title: string;
 	date: string;
-	media?: any;
 	content: string;
 	tags: string;
 	style: { margin: number };
@@ -21,7 +20,6 @@ const Cards: React.SFC<CardProps> = function CardsComp(props) {
 		length(content) > 100 ? slice(0, 100, content) : 'Click to Read';
 	return (
 		<Card fluid style={style} as={Link} to={path}>
-			{media ? <Image src={media} /> : null}
 			<Card.Content>
 				<Card.Header content={title} />
 				<Card.Meta content={date} />
