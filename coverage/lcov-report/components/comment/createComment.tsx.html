@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for components/blog-tags/index.tsx</title>
+    <title>Code coverage report for components/comment/createComment.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">components/blog-tags</a> index.tsx
+      <a href="../../index.html">All files</a> / <a href="index.html">components/comment</a> createComment.tsx
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>2/2</span>
       </div>
     </div>
     <p class="quiet">
@@ -68,11 +68,7 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -80,10 +76,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -95,29 +91,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as React from 'react';
-import { Icon, Label } from 'semantic-ui-react';
-import { map, split } from 'ramda';
-import styles from './tag.module.css';
+import { Form, Button } from 'semantic-ui-react';
 &nbsp;
-interface TagProps {
-	tags: string[];
+interface CreateProps {
+	onReply: () =&gt; void;
+	replyChange: () =&gt; void;
 }
-&nbsp;
-const Tag: React.SFC&lt;TagProps&gt; = ({ tags }) =&gt; (
-	&lt;div className={styles.spacing}&gt;
-		{map(
-			(type, i) =&gt; (
-				&lt;Label className={styles.spacing} key={type}&gt;
-					&lt;Icon name="tag" /&gt;
-					{type}
-				&lt;/Label&gt;
-			),
-			split(',', tags)
-		)}
-	&lt;/div&gt;
+const CreateComment: React.SFC&lt;CreateProps&gt; = ({ onReply, replyChange }) =&gt; (
+	&lt;Form reply&gt;
+		&lt;Form.TextArea data-testid="textbox" onChange={replyChange} /&gt;
+		&lt;Button
+			onClick={onReply}
+			id="submit"
+			content="Add Reply"
+			labelPosition="left"
+			icon="edit"
+			primary
+		/&gt;
+	&lt;/Form&gt;
 );
 &nbsp;
-export default Tag;
+export default CreateComment;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

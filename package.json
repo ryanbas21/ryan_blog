@@ -45,8 +45,8 @@
 		"develop": "gatsby develop",
 		"test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage --accountToken PjZdGT9mP8cBpb5x5GVy --username ryanbas21 --projectName eric_blog",
 		"format": "prettier --write 'src/**/*.js'",
-		"test": "jest --coverage && codecov",
-		"test:watch": "jest --watchAll"
+		"test:watch": "jest --watchAll --silent",
+		"test": "jest --coverage && codecov"
 	},
 	"devDependencies": {
 		"@types/jest": "^23.3.14",
