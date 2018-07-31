@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Icon } from 'semantic-ui-react';
+import styles from './index.module.css';
 
 interface LikesProps {}
 interface LikesState {
@@ -18,7 +19,7 @@ class Likes extends React.Component<LikesProps, LikesState> {
 	}
 	render() {
 		return (
-			<div>
+			<div className={styles.sticky}>
 				{this.state.likes === 0 ? (
 					<Icon
 						size={'large'}

@@ -27,5 +27,5 @@ test('When Like is Clicked Heart should turn red', () => {
 
 	fireEvent.click(likeButton);
 	const redLikeButton = getByTestId('hearted-like');
-	expect(redLikeButton).toBeTruthy();
+	expect(redLikeButton.getAttribute('class')).toBe('red heart large icon');
 });
