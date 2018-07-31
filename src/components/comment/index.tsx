@@ -36,7 +36,7 @@ class Comments extends React.Component<CommentProps, {}> {
 	}
 
 	onReply(e) {
-		const { user = 'Anon' } = this.props;
+		const { user } = this.props;
 		const date = new Date(Date.now()).toString();
 		const { comments, commentText } = this.state;
 		this.setState({
