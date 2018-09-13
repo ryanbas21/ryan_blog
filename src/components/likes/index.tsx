@@ -1,21 +1,31 @@
 import * as React from 'react';
+import { inc } from 'ramda';
+import Rebase from 're-base';
 import { Icon } from 'semantic-ui-react';
 import styles from './index.module.css';
+import base from '../../firebase';
 
 interface LikesProps {}
 interface LikesState {
 	likes: number;
 }
 class Likes extends React.Component<LikesProps, LikesState> {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			likes: 0
 		};
 		this.changeLikes = this.changeLikes.bind(this);
 	}
-	changeLikes(e) {
-		this.setState((state) => ({ likes: (this.state.likes += 1) }));
+	componentDidMount() {
+		base.syncState('likes', {
+			state: 'likes',
+			asArray: false,
+			context: this
+		});
+	}
+	changeLikes() {
+		this.setState({ likes: inc(this.state.likes) });
 	}
 	render() {
 		return (
