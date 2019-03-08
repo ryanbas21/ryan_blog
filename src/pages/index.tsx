@@ -32,9 +32,6 @@ const Index: React.SFC<IndexProps> = function IndexComponent(props) {
 	return (
 		<Layout data={props.allMarkdownRemark}>
 			<div>
-				<About />
-				<h1>Some recent posts</h1>
-
 				{map(
 					({ node }) => (
 						<Card
@@ -60,7 +57,7 @@ export const PageQuery = ({ children }) => (
 		query={graphql`
 			query LoadAll {
 				allMarkdownRemark(
-					sort: { order: DESC, fields: [frontmatter___date] }
+					sort: { order: ASC, fields: [frontmatter___date] }
 					limit: 1000
 				) {
 					edges {
