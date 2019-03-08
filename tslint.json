@@ -1,9 +1,8 @@
-
 {
 	"extends": [
-    "tslint:latest", 
-    "tslint-config-prettier", 
-    "tslint-react", 
-    "tslint-config-prettier"
-  ]
+		"tslint:latest",
+		"tslint-config-prettier",
+		"tslint-react",
+		"tslint-config-prettier"
+	]
 }

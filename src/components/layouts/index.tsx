@@ -1,16 +1,12 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import Header from '../components/header';
-import Search from '../components/search';
-import Navbar from '../components/navbar';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 
-const Layout = ({ children, data, location }) => (
+const Layout = ({ children }) => (
 	<div>
 		<Helmet
-			title={data.site.siteMetadata.title}
 			meta={[
 				{ name: 'description', content: 'Sample' },
 				{ name: 'keywords', content: 'sample, something' }
@@ -20,7 +16,6 @@ const Layout = ({ children, data, location }) => (
 				href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
 			/>
 		</Helmet>
-		<Header siteTitle={data.site.siteMetadata.title} />
 		<div
 			style={{
 				margin: '0 auto',
@@ -28,7 +23,7 @@ const Layout = ({ children, data, location }) => (
 				padding: '0px 1.0875rem 1.45rem',
 				paddingTop: 0
 			}}>
-			{children()}
+			{children}
 		</div>
 	</div>
 );

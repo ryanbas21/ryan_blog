@@ -6,50 +6,52 @@ import CreateComment from './createComment';
 import CurrentComments from './currentComments';
 
 interface CommentProps {
-	user: string;
-	styles: { comments: any };
+	styles?: { comments: any };
 }
 
 interface CommentData {
 	content: string;
 	date: string;
-	author: string;
 }
 interface CommentState {
-	commentText: '';
-	comments: Comment[];
+	comments: CommentData[];
+	content: string;
+	commentText: string;
+	date: Date | String;
 }
-class Comments extends React.Component<CommentProps, {}> {
+class Comments extends React.Component<CommentProps, CommentState> {
 	constructor(props) {
 		super(props);
 		this.state = {
 			comments: [],
+			commentText: '',
 			content: '',
 			date: ''
 		};
 		this.onReply = this.onReply.bind(this);
 		this.replyChange = this.replyChange.bind(this);
 	}
-	replyChange(e) {
-		const commentText = e.target.value;
-		this.setState({ commentText });
+	replyChange(e: React.FormEvent<HTMLTextAreaElement>) {
+		const commentText = e.currentTarget.value;
+		this.setState({ ...this.state, commentText });
 	}
-
-	onReply(e) {
-		const { user } = this.props;
+	onReply() {
 		const date = new Date(Date.now()).toString();
 		const { comments, commentText } = this.state;
 		this.setState({
-			comments: comments.concat({
-				author: user,
-				date,
-				content: commentText
-			}),
+			comments: concat(
+				[
+					{
+						date,
+						content: commentText
+					}
+				],
+				comments
+			),
 			commentText: ''
 		});
 	}
 	render() {
-		const { user } = this.props;
 		const { date, content } = this.state;
 		return (
 			<Comment className={this.props.styles.comments}>
@@ -57,9 +59,9 @@ class Comments extends React.Component<CommentProps, {}> {
 				{map(
 					(comment: CommentData) => (
 						<CurrentComments
-							key={date}
-							user={comment.user}
-							date={comment.date + content}
+							user={'anon'}
+							key={content + date}
+							date={comment.date}
 							content={comment.content}
 							replyChange={this.replyChange}
 							onReply={this.onReply}
