@@ -6,14 +6,12 @@ import CreateComment from './createComment';
 import CurrentComments from './currentComments';
 
 interface CommentProps {
-	user: string;
-	styles: { comments: any };
+	styles?: { comments: any };
 }
 
 interface CommentData {
 	content: string;
 	date: string;
-	author: string;
 }
 interface CommentState {
 	comments: CommentData[];
@@ -33,25 +31,27 @@ class Comments extends React.Component<CommentProps, CommentState> {
 		this.onReply = this.onReply.bind(this);
 		this.replyChange = this.replyChange.bind(this);
 	}
-	replyChange(e: React.ChangeEvent<HTMLInputElement>) {
-		const commentText = e.target.value;
+	replyChange(e: React.FormEvent<HTMLTextAreaElement>) {
+		const commentText = e.currentTarget.value;
 		this.setState({ ...this.state, commentText });
 	}
-	onReply(e: React.ChangeEvent<HTMLInputElement>) {
-		const { user } = this.props;
+	onReply() {
 		const date = new Date(Date.now()).toString();
 		const { comments, commentText } = this.state;
 		this.setState({
-			comments: comments.concat({
-				author: user,
-				date,
-				content: commentText
-			}),
+			comments: concat(
+				[
+					{
+						date,
+						content: commentText
+					}
+				],
+				comments
+			),
 			commentText: ''
 		});
 	}
 	render() {
-		const { user } = this.props;
 		const { date, content } = this.state;
 		return (
 			<Comment className={this.props.styles.comments}>
@@ -59,8 +59,8 @@ class Comments extends React.Component<CommentProps, CommentState> {
 				{map(
 					(comment: CommentData) => (
 						<CurrentComments
+							user={'anon'}
 							key={content + date}
-							user={comment.author}
 							date={comment.date}
 							content={comment.content}
 							replyChange={this.replyChange}

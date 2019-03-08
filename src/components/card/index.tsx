@@ -10,7 +10,7 @@ interface CardProps {
 	title: string;
 	date: string;
 	content: string;
-	tags: string[];
+	tags: string;
 	media?: any;
 	style: { margin: number };
 }

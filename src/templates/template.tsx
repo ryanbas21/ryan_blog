@@ -1,8 +1,8 @@
 import * as React from 'react';
 // import Comments from '../components/comment';
 // import Likes from '../components/likes';
-import { StaticQuery, graphql } from 'gatsby';
-import styles from './template.module.css';
+import { graphql } from 'gatsby';
+import styles from './page.module.css';
 
 interface BlogPostProps {
 	data: {
@@ -17,13 +17,12 @@ interface BlogPostProps {
 	};
 }
 const BlogPost: React.SFC<BlogPostProps> = function Template(props) {
-	console.log(props);
 	const {
 		data: { markdownRemark }
 	} = props;
 	return (
-		<div className={styles.margin}>
-			<div classname={styles.center}>
+		<div className={styles.center}>
+			<div className={styles.margin}>
 				<h2>{markdownRemark.frontmatter.title} </h2>
 				<i>{markdownRemark.frontmatter.date}</i>
 				<div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
