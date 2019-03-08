@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 import { map } from 'ramda';
-import Link from 'gatsby-link';
 import Card from '../components/card';
-import About from '../components/about';
+import Layout from '../components/layouts/index';
 
 const style = {
 	margin: 20
@@ -11,63 +11,70 @@ const style = {
 interface node {
 	node: {
 		frontmatter: {
+			title: string;
 			date: string;
 			path: string;
+			tags: string[];
 		};
+		id: string;
 		html: string;
 	};
 }
 interface IndexProps {
-	data: {
-		edges: {
-			allMarkdownRemark: {
-				edges: node[];
-			};
-		};
+	allMarkdownRemark: {
+		edges: node[];
 	};
 }
+
 const Index: React.SFC<IndexProps> = function IndexComponent(props) {
 	return (
-		<div>
-			<About />
-			<h1>Some recent posts</h1>
-			{map(
-				({ node }) => (
-					<Card
-						path={node.frontmatter.path}
-						key={node.id}
-						title={node.frontmatter.title}
-						date={node.frontmatter.date}
-						content={node.html}
-						tags={node.frontmatter.tags}
-					/>
-				),
-				props.data.allMarkdownRemark.edges
-			)}
-		</div>
+		<Layout>
+			<div>
+				{map(
+					({ node }) => (
+						<Card
+							style={style}
+							id={node.id}
+							path={node.frontmatter.path}
+							key={node.id}
+							title={node.frontmatter.title}
+							date={node.frontmatter.date}
+							content={node.html}
+							tags={node.frontmatter.tags}
+						/>
+					),
+					props.allMarkdownRemark.edges
+				)}
+			</div>
+		</Layout>
 	);
 };
 
-export const pageQuery = graphql`
-	query LoadAll {
-		allMarkdownRemark(
-			sort: { order: DESC, fields: [frontmatter___date] }
-			limit: 1000
-		) {
-			edges {
-				node {
-					id
-					html
-					frontmatter {
-						path
-						title
-						date
-						tags
+export const PageQuery = ({ children }) => (
+	<StaticQuery
+		query={graphql`
+			query LoadAll {
+				allMarkdownRemark(
+					sort: { order: ASC, fields: [frontmatter___date] }
+					limit: 1000
+				) {
+					edges {
+						node {
+							id
+							html
+							frontmatter {
+								path
+								title
+								date
+								tags
+							}
+						}
 					}
 				}
 			}
-		}
-	}
-`;
+		`}
+		render={(data) => <Index {...data} />}
+	/>
+);
 
-export default Index;
+export default PageQuery;
