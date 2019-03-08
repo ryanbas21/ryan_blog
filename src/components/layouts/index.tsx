@@ -1,13 +1,10 @@
 import * as React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import Header from '../header';
-// import Search from '../components/search/index';
-// import Navbar from '../components/navbar';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 
-const Layout = ({ children, data }) => (
+const Layout = ({ children }) => (
 	<div>
 		<Helmet
 			meta={[

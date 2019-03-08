@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { map } from 'ramda';
-import Link from 'gatsby-link';
 import Card from '../components/card';
-import About from '../components/about';
 import Layout from '../components/layouts/index';
 
 const style = {
@@ -30,7 +28,7 @@ interface IndexProps {
 
 const Index: React.SFC<IndexProps> = function IndexComponent(props) {
 	return (
-		<Layout data={props.allMarkdownRemark}>
+		<Layout>
 			<div>
 				{map(
 					({ node }) => (

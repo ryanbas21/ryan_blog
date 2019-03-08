@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'semantic-ui-react';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import { pipe, length, always, lt, ifElse, slice } from 'ramda';
 import Tag from '../blog-tags';
 
