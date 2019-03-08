@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Form, Button } from 'semantic-ui-react';
 
 interface CreateProps {
-	onReply: () => void;
-	replyChange: () => void;
+	onReply: (a: React.ChangeEvent<HTMLInputElement>) => void;
+	replyChange: (a: React.ChangeEvent<HTMLInputElement>) => void;
 }
 const CreateComment: React.SFC<CreateProps> = ({ onReply, replyChange }) => (
-	<Form reply>
+	<Form>
 		<Form.TextArea data-testid="textbox" onChange={replyChange} />
 		<Button
 			onClick={onReply}

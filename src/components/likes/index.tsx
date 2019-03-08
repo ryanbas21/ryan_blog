@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { isNil } from 'ramda';
 import { Icon } from 'semantic-ui-react';
 import styles from './index.module.css';
 
@@ -7,20 +8,20 @@ interface LikesState {
 	likes: number;
 }
 class Likes extends React.Component<LikesProps, LikesState> {
-	constructor() {
-		super();
+	constructor(props: LikesProps) {
+		super(props);
 		this.state = {
 			likes: 0
 		};
 		this.changeLikes = this.changeLikes.bind(this);
 	}
-	changeLikes(e) {
-		this.setState((state) => ({ likes: (this.state.likes += 1) }));
+	changeLikes() {
+		this.setState((state: LikesState) => ({ likes: state.likes + 1 }));
 	}
 	render() {
 		return (
 			<div className={styles.sticky}>
-				{this.state.likes === 0 ? (
+				{isNil(this.state.likes) ? (
 					<Icon
 						size={'large'}
 						name={'heart outline'}

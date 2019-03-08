@@ -31,7 +31,7 @@ test('Should handle onchange', () => {
 	);
 	const comment = getByTestId('textbox');
 
-	comment.value = 'Great advice, I love your posts!';
+	(comment as HTMLInputElement).value = 'Great advice, I love your posts!';
 	fireEvent.change(comment);
 
 	expect(change).toHaveBeenCalledTimes(1);

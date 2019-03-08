@@ -16,26 +16,28 @@ interface CommentData {
 	author: string;
 }
 interface CommentState {
-	commentText: '';
-	comments: Comment[];
+	comments: CommentData[];
+	content: string;
+	commentText: string;
+	date: Date | String;
 }
-class Comments extends React.Component<CommentProps, {}> {
+class Comments extends React.Component<CommentProps, CommentState> {
 	constructor(props) {
 		super(props);
 		this.state = {
 			comments: [],
+			commentText: '',
 			content: '',
 			date: ''
 		};
 		this.onReply = this.onReply.bind(this);
 		this.replyChange = this.replyChange.bind(this);
 	}
-	replyChange(e) {
+	replyChange(e: React.ChangeEvent<HTMLInputElement>) {
 		const commentText = e.target.value;
-		this.setState({ commentText });
+		this.setState({ ...this.state, commentText });
 	}
-
-	onReply(e) {
+	onReply(e: React.ChangeEvent<HTMLInputElement>) {
 		const { user } = this.props;
 		const date = new Date(Date.now()).toString();
 		const { comments, commentText } = this.state;
@@ -57,9 +59,9 @@ class Comments extends React.Component<CommentProps, {}> {
 				{map(
 					(comment: CommentData) => (
 						<CurrentComments
-							key={date}
-							user={comment.user}
-							date={comment.date + content}
+							key={content + date}
+							user={comment.author}
+							date={comment.date}
 							content={comment.content}
 							replyChange={this.replyChange}
 							onReply={this.onReply}
