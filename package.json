@@ -1,7 +1,7 @@
 {
-	"name": "gatsby-starter-default",
-	"description": "Gatsby default starter",
-	"version": "1.0.0",
+	"name": "my-personal-blog",
+	"description": "Blog Site",
+	"version": "2.0.0",
 	"author": "Ryan Basmajian",
 	"dependencies": {
 		"@types/react-helmet": "^5.0.8",
