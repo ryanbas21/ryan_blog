@@ -1,6 +1,6 @@
 {
-	"name": "gatsby-starter-default",
-	"description": "Gatsby default starter",
+	"name": "My Personal Blog",
+	"description": "Blog Site",
 	"version": "1.0.0",
 	"author": "Ryan Basmajian",
 	"dependencies": {
