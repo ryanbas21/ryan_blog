@@ -1,13 +1,22 @@
 module.exports = {
 	siteMetadata: {
-		title: `Ryan's Blog`
+		title: `Ryan Bas Blog`,
+		siteUrl: `https://www.ryanbas.com`
 	},
 	plugins: [
 		`gatsby-plugin-sharp`,
 		`gatsby-plugin-postcss`,
 		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-typescript`,
+		`gatsby-plugin-sitemap`,
+		'gatsby-plugin-robots-txt',
 		// `gatsby-plugin-typescript-css-modules`,
+		{
+			resolve: `gatsby-transformer-remark`,
+			options: {
+				plugins: [`gatsby-remark-smartypants`]
+			}
+		},
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
@@ -127,6 +136,17 @@ module.exports = {
 				include_favicon: true // Include favicon
 			}
 		},
-		`gatsby-plugin-offline`
+		`gatsby-plugin-offline`,
+		{
+			resolve: `gatsby-plugin-purgecss`,
+			options: {
+				printRejected: true, // Print removed selectors and processed file names
+				develop: true, // Enable while using `gatsby develop`
+				// tailwind: true, // Enable tailwindcss support
+				whitelist: ['whitelist'], // Don't remove this selector
+				ignore: ['/ignored.css', 'prismjs/', 'semantic-ui-css/'] // Ignore files/folders
+				//purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
+			}
+		}
 	]
 };
