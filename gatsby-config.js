@@ -1,13 +1,21 @@
 module.exports = {
 	siteMetadata: {
-		title: `Ryan's Blog`
+		title: `ryanbas.com`
 	},
 	plugins: [
 		`gatsby-plugin-sharp`,
 		`gatsby-plugin-postcss`,
 		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-typescript`,
+		`gatsby-plugin-sitemap`,
+		'gatsby-plugin-robots-txt',
 		// `gatsby-plugin-typescript-css-modules`,
+		{
+			resolve: `gatsby-transformer-remark`,
+			options: {
+				plugins: [`gatsby-remark-smartypants`]
+			}
+		},
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
