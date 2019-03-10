@@ -1,7 +1,7 @@
 {
 	"name": "my-personal-blog",
 	"description": "Blog Site",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"author": "Ryan Basmajian",
 	"dependencies": {
 		"@types/react-helmet": "^5.0.8",
@@ -15,13 +15,13 @@
 		"gatsby-plugin-robots-txt": "^1.4.0",
 		"gatsby-plugin-sharp": "^2.0.25",
 		"gatsby-plugin-sitemap": "^2.0.6",
-		"gatsby-plugin-typescript-css-modules": "^1.0.4",
 		"gatsby-remark-copy-linked-files": "^2.0.9",
 		"gatsby-remark-images": "^3.0.6",
 		"gatsby-remark-prismjs": "^3.2.4",
 		"gatsby-remark-smartypants": "^2.0.8",
 		"gatsby-source-filesystem": "^2.0.23",
 		"gatsby-transformer-remark": "^2.3.1",
+		"gatsby-transformer-typescript-css-modules": "^1.0.14",
 		"postcss-browser-reporter": "^0.5.0",
 		"postcss-cssnext": "^3.1.0",
 		"postcss-import": "^12.0.1",

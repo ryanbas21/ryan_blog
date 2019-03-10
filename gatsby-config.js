@@ -9,7 +9,7 @@ module.exports = {
 		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-typescript`,
 		`gatsby-plugin-sitemap`,
-		`gatsby-plugin-typescript-css-modules`,
+		`gatsby-transformer-typescript-css-modules`,
 		{
 			resolve: 'gatsby-plugin-robots-txt',
 			options: {
