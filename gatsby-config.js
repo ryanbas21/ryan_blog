@@ -9,8 +9,22 @@ module.exports = {
 		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-typescript`,
 		`gatsby-plugin-sitemap`,
-		'gatsby-plugin-robots-txt',
-		// `gatsby-plugin-typescript-css-modules`,
+		`gatsby-plugin-typescript-css-modules`,
+		{
+			resolve: 'gatsby-plugin-robots-txt',
+			options: {
+				host: 'https://www.example.com',
+				sitemap: 'https://www.example.com/sitemap.xml',
+				env: {
+					development: {
+						policy: [{ userAgent: '*', disallow: ['/'] }]
+					},
+					production: {
+						policy: [{ userAgent: '*', allow: '/' }]
+					}
+				}
+			}
+		},
 		{
 			resolve: `gatsby-transformer-remark`,
 			options: {
