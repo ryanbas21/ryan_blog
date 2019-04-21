@@ -5,8 +5,8 @@ interface CurrentCommentProps {
 	user: string;
 	date: string;
 	content: string;
-	replyChange: (e) => void;
-	onReply: (e) => void;
+	replyChange: (e: React.FormEvent<HTMLInputElement>) => any;
+	onReply: (...args: any[]) => any;
 }
 const CurrentComments: React.SFC<CurrentCommentProps> = (props) => (
 	<Comment.Group key={props.user + props.date + props.content}>
