@@ -14,13 +14,13 @@ function mapTags(type: string): React.ReactNode {
 		</Label>
 	);
 }
+const renderTags: (tags) => React.ReactNode = pipe(
+	split(','),
+	map(mapTags)
+);
+
 const Tag: React.SFC<TagProps> = ({ tags }) => (
-	<div className={styles.spacing}>
-		{pipe(
-			split(','),
-			map(mapTags)
-		)(tags)}
-	</div>
+	<div className={styles.spacing}>{renderTags(tags)}</div>
 );
 
 export default Tag;

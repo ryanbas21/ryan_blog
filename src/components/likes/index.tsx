@@ -1,45 +1,40 @@
-import * as React from 'react';
-import { isNil } from 'ramda';
+import React, { useState } from 'react';
+import { ifElse, equals, thunkify } from 'ramda';
 import { Icon } from 'semantic-ui-react';
 import styles from './index.module.css';
 
 interface LikesProps {}
-interface LikesState {
-	likes: number;
-}
-class Likes extends React.Component<LikesProps, LikesState> {
-	constructor(props: LikesProps) {
-		super(props);
-		this.state = {
-			likes: 0
-		};
-		this.changeLikes = this.changeLikes.bind(this);
-	}
-	changeLikes() {
-		this.setState((state: LikesState) => ({ likes: state.likes + 1 }));
-	}
-	render() {
-		return (
-			<div className={styles.sticky}>
-				{isNil(this.state.likes) ? (
+
+const changeLikes = thunkify((likes, setLikes) => setLikes(likes + 1));
+const equalsZero = equals(0);
+
+const Likes: React.SFC<LikesProps> = (props) => {
+	const [likes, setLikes] = useState(0);
+	return (
+		<div className={styles.sticky}>
+			{ifElse(
+				equalsZero,
+				() => (
 					<Icon
 						size={'large'}
 						name={'heart outline'}
 						data-testid="likes-button"
-						onClick={this.changeLikes}
+						onClick={changeLikes(likes, setLikes)}
 					/>
-				) : (
+				),
+				() => (
 					<Icon
 						size={'large'}
 						name={'heart'}
 						color={'red'}
 						data-testid="hearted-like"
-						onClick={this.changeLikes}
+						onClick={changeLikes(likes, setLikes)}
 					/>
-				)}
-				<i data-testid="total-likes">{this.state.likes}</i>
-			</div>
-		);
-	}
-}
+				)
+			)(likes)}
+			<i data-testid="total-likes">{likes}</i>
+		</div>
+	);
+};
+
 export default Likes;

@@ -14,7 +14,7 @@ interface node {
 			title: string;
 			date: string;
 			path: string;
-			tags: string[];
+			tags: string;
 		};
 		id: string;
 		html: string;
