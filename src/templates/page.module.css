@@ -1,7 +1,9 @@
 .comments {
   margin: 40px;
 }
-
+.postMargin {
+  margin: 3% 0% 5% 0%;
+}
 .margin {
   margin-left: 10%;
   margin-right: 10%;

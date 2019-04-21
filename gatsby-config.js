@@ -9,6 +9,7 @@ module.exports = {
 		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-typescript`,
 		`gatsby-plugin-sitemap`,
+		`gatsby-plugin-webpack-bundle-analyser-v2`,
 		{
 			resolve: 'gatsby-plugin-robots-txt',
 			options: {

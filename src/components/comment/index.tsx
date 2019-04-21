@@ -1,9 +1,34 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Comment } from 'semantic-ui-react';
-import { map, concat } from 'ramda';
-import CommentHeader from './commentHeader';
-import CreateComment from './createComment';
-import CurrentComments from './currentComments';
+import CommentHeader from './commentHeader.tsx';
+import CreateComment from './createComment.tsx';
+import { thunkify, curry, pipe, propOr, map, concat } from 'ramda';
+
+const onReply = thunkify(function(commentsState, setComments): void {
+	const date = new Date(Date.now()).toString();
+	const { comments, commentText } = commentsState;
+	setComments({
+		comments: concat(
+			[
+				{
+					date,
+					content: commentText
+				}
+			],
+			comments
+		),
+		commentText: ''
+	});
+});
+
+const replyChange = curry(function(
+	commentsState,
+	setComments,
+	e: React.FormEvent<HTMLTextAreaElement>
+) {
+	const commentText = e.currentTarget.value;
+	setComments({ ...commentsState, commentText });
+});
 
 interface CommentProps {
 	styles?: { comments: any };
@@ -19,60 +44,37 @@ interface CommentState {
 	commentText: string;
 	date: Date | String;
 }
-class Comments extends React.Component<CommentProps, CommentState> {
-	constructor(props) {
-		super(props);
-		this.state = {
-			comments: [],
-			commentText: '',
-			content: '',
-			date: ''
-		};
-		this.onReply = this.onReply.bind(this);
-		this.replyChange = this.replyChange.bind(this);
-	}
-	replyChange(e: React.FormEvent<HTMLTextAreaElement>) {
-		const commentText = e.currentTarget.value;
-		this.setState({ ...this.state, commentText });
-	}
-	onReply() {
-		const date = new Date(Date.now()).toString();
-		const { comments, commentText } = this.state;
-		this.setState({
-			comments: concat(
-				[
-					{
-						date,
-						content: commentText
-					}
-				],
-				comments
-			),
-			commentText: ''
-		});
-	}
-	render() {
-		const { date, content } = this.state;
-		return (
-			<Comment className={this.props.styles.comments}>
-				<CommentHeader />
-				{map(
-					(comment: CommentData) => (
-						<CurrentComments
-							user={'anon'}
-							key={content + date}
-							date={comment.date}
-							content={comment.content}
-							replyChange={this.replyChange}
-							onReply={this.onReply}
-						/>
-					),
-					this.state.comments
-				)}
-				<CreateComment replyChange={this.replyChange} onReply={this.onReply} />
-			</Comment>
-		);
-	}
-}
-
+const Comments: React.SFC<CommentProps> = (props) => {
+	const [commentsState, setComments] = useState<CommentState>({
+		comments: [],
+		commentText: '',
+		content: '',
+		date: ''
+	});
+	const renderComments = pipe(
+		propOr([], 'comments'),
+		map((comment: CommentData) => (
+			<CurrentComments
+				user={'anon'}
+				key={content + date}
+				date={comment.date}
+				content={comment.content}
+				replyChange={replyChange(commentsState, setComments) as any}
+				onReply={onReply(commentsState, setComments)}
+			/>
+		))
+	);
+	const { date, content } = commentsState;
+	return (
+		<Comment className={props.styles.comments}>
+			<CommentHeader />
+			{renderComments(commentsState)}
+			<CreateComment
+				commentText={commentsState.commentText}
+				replyChange={replyChange(commentsState, setComments) as any}
+				onReply={() => onReply(commentsState, setComments)}
+			/>
+		</Comment>
+	);
+};
 export default Comments;
