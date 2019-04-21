@@ -6,7 +6,7 @@ import Comments from './';
 afterEach(cleanup);
 test('Should create a comment', () => {
 	const { getByTestId, getByText } = render(
-		<Comments user="Anon" styles={{ comments: 5 }} />
+		<Comments styles={{ comments: 5 }} />
 	);
 	const comment = getByTestId('textbox');
 	const button = getByText('Add Reply');

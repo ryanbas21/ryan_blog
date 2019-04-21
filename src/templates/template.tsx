@@ -1,7 +1,6 @@
 import * as React from 'react';
-import Comments from '../components/comment';
-import Likes from '../components/likes';
 import { graphql } from 'gatsby';
+import { prop, pipe } from 'ramda';
 import styles from './page.module.css';
 
 interface BlogPostProps {
@@ -16,6 +15,21 @@ interface BlogPostProps {
 		};
 	};
 }
+
+const frontmatterProp = prop('frontmatter');
+const titleProp = prop('title');
+const dateProp = prop('date');
+const htmlProp = prop('html');
+
+const grabTitle = pipe(
+	frontmatterProp,
+	titleProp
+);
+const grabDate = pipe(
+	frontmatterProp,
+	dateProp
+);
+
 const BlogPost: React.SFC<BlogPostProps> = function Template(props) {
 	const {
 		data: { markdownRemark }
@@ -23,10 +37,12 @@ const BlogPost: React.SFC<BlogPostProps> = function Template(props) {
 	return (
 		<div className={styles.center}>
 			<div className={styles.margin}>
-				<h2>{markdownRemark.frontmatter.title} </h2>
-				<i>{markdownRemark.frontmatter.date}</i>
-				<div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
-				<Comments styles={styles} />
+				<h2>{grabTitle(markdownRemark)} </h2>
+				<i>{grabDate(markdownRemark)}</i>
+				<div
+					className={styles.postMargin}
+					dangerouslySetInnerHTML={{ __html: htmlProp(markdownRemark) }}
+				/>
 			</div>
 		</div>
 	);
