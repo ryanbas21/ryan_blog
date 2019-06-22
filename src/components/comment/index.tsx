@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Comment } from 'semantic-ui-react';
-import { curry, thunkify, pipe, propOr, map, concat } from 'ramda';
-import CommentHeader from './commentHeader';
-import CreateComment from './createComment';
-import CurrentComments from './currentComments';
+import CommentHeader from './commentHeader.tsx';
+import CreateComment from './createComment.tsx';
+import { thunkify, curry, pipe, propOr, map, concat } from 'ramda';
 
 const onReply = thunkify(function(commentsState, setComments): void {
 	const date = new Date(Date.now()).toString();
@@ -78,5 +77,4 @@ const Comments: React.SFC<CommentProps> = (props) => {
 		</Comment>
 	);
 };
-
 export default Comments;
