@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 import { Link } from 'gatsby';
 import { pipe, length, always, lt, ifElse, slice } from 'ramda';
-import Tag from '../blog-tags';
+const Tag = React.lazy(() => import('../blog-tags'));
 
 interface CardProps {
 	id: string;
@@ -42,7 +42,9 @@ const Cards: React.SFC<CardProps> = function CardsComp(props) {
 				</Card.Description>
 			</Card.Content>
 			<Card.Content extra>
-				<Tag tags={tags} />
+				<React.Suspense fallback={<div>Loading</div>}>
+					<Tag tags={tags} />
+				</React.Suspense>
 			</Card.Content>
 		</Card>
 	);

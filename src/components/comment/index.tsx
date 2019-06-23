@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Comment } from 'semantic-ui-react';
 import { curry, thunkify, pipe, propOr, map, concat } from 'ramda';
-import CommentHeader from './commentHeader';
-import CreateComment from './createComment';
-import CurrentComments from './currentComments';
+const CommentHeader = React.lazy(() => import('./commentHeader'));
+const CreateComment = React.lazy(() => import('./createComment'));
+const CurrentComments = React.lazy(() => import('./currentComments'));
 
 const onReply = thunkify(function(commentsState, setComments): void {
 	const date = new Date(Date.now()).toString();
@@ -67,15 +67,17 @@ const Comments: React.SFC<CommentProps> = (props) => {
 	);
 	const { date, content } = commentsState;
 	return (
-		<Comment className={props.styles.comments}>
-			<CommentHeader />
-			{renderComments(commentsState)}
-			<CreateComment
-				commentText={commentsState.commentText}
-				replyChange={replyChange(commentsState, setComments) as any}
-				onReply={() => onReply(commentsState, setComments)}
-			/>
-		</Comment>
+		<React.Suspense fallback={<div>loading...</div>}>
+			<Comment className={props.styles.comments}>
+				<CommentHeader />
+				{renderComments(commentsState)}
+				<CreateComment
+					commentText={commentsState.commentText}
+					replyChange={replyChange(commentsState, setComments) as any}
+					onReply={() => onReply(commentsState, setComments)}
+				/>
+			</Comment>
+		</React.Suspense>
 	);
 };
 
