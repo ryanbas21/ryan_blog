@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Comment } from 'semantic-ui-react';
-import CommentHeader from './commentHeader.tsx';
-import CreateComment from './createComment.tsx';
+const CommentHeader = React.lazy(() => import('./commentHeader.tsx'));
+const CreateComment = React.lazy(() => import('./createComment.tsx'));
 import { thunkify, curry, pipe, propOr, map, concat } from 'ramda';
 
 const onReply = thunkify(function(commentsState, setComments): void {
@@ -67,13 +67,15 @@ const Comments: React.SFC<CommentProps> = (props) => {
 	const { date, content } = commentsState;
 	return (
 		<Comment className={props.styles.comments}>
-			<CommentHeader />
-			{renderComments(commentsState)}
-			<CreateComment
-				commentText={commentsState.commentText}
-				replyChange={replyChange(commentsState, setComments) as any}
-				onReply={() => onReply(commentsState, setComments)}
-			/>
+			<React.Suspense fallback={<Loading />}>
+				<CommentHeader />
+				{renderComments(commentsState)}
+				<CreateComment
+					commentText={commentsState.commentText}
+					replyChange={replyChange(commentsState, setComments) as any}
+					onReply={() => onReply(commentsState, setComments)}
+				/>
+			</React.Suspense>
 		</Comment>
 	);
 };

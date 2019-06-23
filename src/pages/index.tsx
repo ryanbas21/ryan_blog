@@ -29,7 +29,7 @@ interface IndexProps {
 
 const Index: React.SFC<IndexProps> = function IndexComponent(props) {
 	return (
-		<React.Suspense fallback={() => <Loading />}>
+		<React.Suspense fallback={<Loading />}>
 			<Layout>
 				<div>
 					{map(
