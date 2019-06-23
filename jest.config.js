@@ -1,7 +1,13 @@
 module.exports = {
+	globals: {
+		'ts-jest': {
+			tsConfig: 'tsconfig.test.json'
+		}
+	},
 	roots: ['<rootDir>/src'],
 	testURL: 'http://localhost/',
 	transform: {
+		'^.+\\.jsx?$': 'babel-jest',
 		'^.+\\.tsx?$': 'ts-jest'
 	},
 	testRegex: '((\\.|/)(test|spec))\\.tsx?$',

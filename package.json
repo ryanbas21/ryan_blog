@@ -43,9 +43,14 @@
 		"develop": "gatsby develop",
 		"format": "prettier --write 'src/**/*.js'",
 		"test": "jest --coverage && codecov",
-		"test:watch": "jest --watchAll"
+		"test:watch": "jest --watch"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.4.5",
+		"@babel/plugin-proposal-class-properties": "^7.4.4",
+		"@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+		"@babel/plugin-syntax-dynamic-import": "^7.2.0",
+		"@babel/preset-react": "^7.0.0",
 		"@types/jest": "^23.3.14",
 		"@types/ramda": "^0.26.7",
 		"@types/react": "^16.8.14",
@@ -54,6 +59,7 @@
 		"@types/react-redux": "^6.0.14",
 		"@types/react-router-dom": "^4.3.2",
 		"@types/redux": "^3.6.0",
+		"babel-jest": "^24.8.0",
 		"codecov": "^3.3.0",
 		"gatsby-plugin-typescript": "^2.0.12",
 		"gatsby-plugin-typography": "^2.2.13",
