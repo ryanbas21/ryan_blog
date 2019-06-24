@@ -1,3 +1,4 @@
+require('dotenv').config();
 module.exports = {
 	siteMetadata: {
 		title: `Ryan Bas Blog`,
@@ -10,6 +11,14 @@ module.exports = {
 		`gatsby-plugin-typescript`,
 		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-webpack-bundle-analyser-v2`,
+		{
+			resolve: `gatsby-source-contentful`,
+			options: {
+				spaceId: process.env.SPACE_ID,
+				// Learn about environment variables: https://gatsby.dev/env-vars
+				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+			}
+		},
 		{
 			resolve: 'gatsby-plugin-robots-txt',
 			options: {
