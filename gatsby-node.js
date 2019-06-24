@@ -7,6 +7,13 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 	return new Promise((resolve, reject) => {
 		graphql(`
 			{
+				contentfulPost {
+					title
+					subHeader
+					content {
+						content
+					}
+				}
 				allMarkdownRemark {
 					edges {
 						node {
@@ -16,7 +23,6 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 								title
 								date
 								tags
-
 							}
 						}
 					}
@@ -24,7 +30,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 			}
 		`).then((result) => {
 			const productTemplate = path.resolve(`src/templates/template.tsx`);
-			forEach(({ node }) => {
+			forEach(({ node, ...other }) => {
 				createPage({
 					path: node.frontmatter.path,
 					component: slash(productTemplate)
