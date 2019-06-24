@@ -14,20 +14,10 @@ interface CardProps {
 	media?: any;
 	style: { margin: number };
 }
-const lengthLessThan100 = pipe(
-	length,
-	lt(100)
-);
-const sliceFirst100 = slice(0, 100);
 
+const sliceDate = slice(0, 10);
 const Cards: React.SFC<CardProps> = function CardsComp(props) {
 	const { path, style, content, tags, title, date } = props;
-	const contentLength = ifElse(
-		lengthLessThan100,
-		sliceFirst100,
-		always('Click to Read')
-	)(content);
-
 	return (
 		<Card fluid style={style} as={Link} to={path}>
 			<Card.Content>

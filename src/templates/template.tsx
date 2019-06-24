@@ -27,11 +27,6 @@ const grabContent = pipe(
 	contentProp
 );
 const grabTitle = pipe(titleProp);
-const grabDate = pipe(
-	dateProp,
-	slice(0, 10)
-);
-
 const document = (content) => ({
 	nodeType: 'document',
 	data: {},
@@ -39,6 +34,10 @@ const document = (content) => ({
 });
 const options = {
 	renderNode: {
+		[MARKS.CODE]: (node) => {
+			console.log(node);
+			return <pre>{node.value}</pre>;
+		},
 		[BLOCKS.EMBEDDED_ASSET]: (node) => {
 			const { title, description, file } = node.data.target.fields;
 			const mimeType = file['en-US'].contentType;
@@ -71,7 +70,7 @@ const BlogPost: React.SFC<BlogPostProps> = function Template(props) {
 		<div className={styles.center}>
 			<div className={styles.margin}>
 				<h2>{grabTitle(contentfulPost)} </h2>
-				<i>{grabDate(contentfulPost)}</i>
+				<i>{contentfulPost}</i>
 				<div className={styles.postMargin} />
 				{documentToReactComponents(
 					document(grabContent(contentfulPost)),
@@ -95,7 +94,7 @@ export const pageQuery = graphql`
 		markdownRemark(frontmatter: { path: { eq: $path } }) {
 			html
 			frontmatter {
-				date(formatString: "MMMM DD, YYYY")
+				date(formatString: "MM/DD/YY")
 				path
 				title
 			}

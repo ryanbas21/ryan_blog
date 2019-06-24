@@ -1,4 +1,5 @@
 # Project dependencies
+.env
 tags.tmp
 coverage
 tags.temp
