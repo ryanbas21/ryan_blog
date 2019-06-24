@@ -9,22 +9,9 @@ const style = {
 	margin: 20
 };
 
-interface node {
-	node: {
-		frontmatter: {
-			title: string;
-			date: string;
-			path: string;
-			tags: string;
-		};
-		id: string;
-		html: string;
-	};
-}
 interface IndexProps {
-	allMarkdownRemark: {
-		edges: node[];
-	};
+	title;
+	content;
 }
 
 const Index: React.SFC<IndexProps> = function IndexComponent(props) {
@@ -33,19 +20,18 @@ const Index: React.SFC<IndexProps> = function IndexComponent(props) {
 			<Layout>
 				<div>
 					{map(
-						({ node }) => (
+						({ node: { tags, id, title, subHeader } }) => (
 							<Card
 								style={style}
-								id={node.id}
-								path={node.frontmatter.path}
-								key={node.id}
-								title={node.frontmatter.title}
-								date={node.frontmatter.date}
-								content={node.html}
-								tags={node.frontmatter.tags}
+								id={id}
+								path={toPath(title)}
+								key={id}
+								title={title}
+								date={subHeader}
+								tags={tags}
 							/>
 						),
-						props.allMarkdownRemark.edges
+						props.allContentfulPost.edges
 					)}
 				</div>
 			</Layout>
@@ -53,24 +39,20 @@ const Index: React.SFC<IndexProps> = function IndexComponent(props) {
 	);
 };
 
+function toPath(title) {
+	return title.replace(/ /gm, '-').toLowerCase();
+}
 export const PageQuery = ({ children }) => (
 	<StaticQuery
 		query={graphql`
-			query LoadAll {
-				allMarkdownRemark(
-					sort: { order: ASC, fields: [frontmatter___date] }
-					limit: 1000
-				) {
+			query Name {
+				allContentfulPost(sort: { order: DESC, fields: [subHeader] }) {
 					edges {
 						node {
 							id
-							html
-							frontmatter {
-								path
-								title
-								date
-								tags
-							}
+							title
+							subHeader(formatString: "MM/DD/YY")
+							tags
 						}
 					}
 				}
