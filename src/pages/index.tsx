@@ -42,24 +42,27 @@ const Index: React.SFC<IndexProps> = function IndexComponent(props) {
 function toPath(title) {
 	return title.replace(/ /gm, '-').toLowerCase();
 }
-export const PageQuery = ({ children }) => (
-	<StaticQuery
-		query={graphql`
-			query Name {
-				allContentfulPost(sort: { order: DESC, fields: [subHeader] }) {
-					edges {
-						node {
-							id
-							title
-							subHeader(formatString: "MM/DD/YY")
-							tags
+export const PageQuery = ({ children, ...rest }) => {
+	console.log(rest);
+	return (
+		<StaticQuery
+			query={graphql`
+				query Name {
+					allContentfulPost(sort: { order: DESC, fields: [subHeader] }) {
+						edges {
+							node {
+								id
+								title
+								subHeader(formatString: "MM/DD/YY")
+								tags
+							}
 						}
 					}
 				}
-			}
-		`}
-		render={(data) => <Index {...data} />}
-	/>
-);
+			`}
+			render={(data) => <Index {...data} />}
+		/>
+	);
+};
 
 export default PageQuery;

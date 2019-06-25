@@ -21,12 +21,14 @@ exports.createPages = ({ graphql, actions }) => {
 				}
 			}
 		`).then((result) => {
-			console.log(result);
 			const productTemplate = path.resolve(`src/templates/template.tsx`);
 			forEach(({ node, ...other }) => {
 				createPage({
 					path: toPath(node.title),
-					component: slash(productTemplate)
+					component: slash(productTemplate),
+					context: {
+						title: node.title
+					}
 				});
 			}, result.data.allContentfulPost.edges);
 			resolve();

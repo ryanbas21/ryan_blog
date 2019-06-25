@@ -18,15 +18,39 @@ interface BlogPostProps {
 const frontmatterProp = prop('frontmatter');
 const titleProp = prop('title');
 const dateProp = prop('subHeader');
+const dataProp = prop('data');
+const nodeProp = prop('node');
+const contentfulPostProp = prop('allContentfulPost');
+const edges = prop('edges');
 const contentProp = prop('content');
 const valueProp = prop('value');
 const grabContent = pipe(
+	dataProp,
+	contentfulPostProp,
+	edges,
+	head,
+	nodeProp,
 	contentProp,
 	contentProp,
 	JSON.parse,
 	contentProp
 );
-const grabTitle = pipe(titleProp);
+const grabTitle = pipe(
+	dataProp,
+	contentfulPostProp,
+	edges,
+	head,
+	nodeProp,
+	titleProp
+);
+const grabDate = pipe(
+	dataProp,
+	contentfulPostProp,
+	edges,
+	head,
+	nodeProp,
+	dateProp
+);
 const document = (content) => ({
 	nodeType: 'document',
 	data: {},
@@ -63,19 +87,14 @@ const options = {
 	}
 };
 const BlogPost: React.SFC<BlogPostProps> = function Template(props) {
-	const {
-		data: { contentfulPost }
-	} = props;
+	console.log('content', grabContent(props));
 	return (
 		<div className={styles.center}>
 			<div className={styles.margin}>
-				<h2>{grabTitle(contentfulPost)} </h2>
-				<i>{contentfulPost}</i>
+				<h2>{grabTitle(props)} </h2>
+				<i>{grabDate(props)}</i>
 				<div className={styles.postMargin} />
-				{documentToReactComponents(
-					document(grabContent(contentfulPost)),
-					options
-				)}
+				{documentToReactComponents(document(grabContent(props)), options)}
 			</div>
 		</div>
 	);
@@ -83,20 +102,16 @@ const BlogPost: React.SFC<BlogPostProps> = function Template(props) {
 
 export default BlogPost;
 export const pageQuery = graphql`
-	query BlogPostByPath($path: String!) {
-		contentfulPost {
-			title
-			subHeader
-			content {
-				content
-			}
-		}
-		markdownRemark(frontmatter: { path: { eq: $path } }) {
-			html
-			frontmatter {
-				date(formatString: "MM/DD/YY")
-				path
-				title
+	query BlogPostByPath($title: String!) {
+		allContentfulPost(filter: { title: { eq: $title } }) {
+			edges {
+				node {
+					title
+					subHeader(formatString: "MM/DD/YY")
+					content {
+						content
+					}
+				}
 			}
 		}
 	}
