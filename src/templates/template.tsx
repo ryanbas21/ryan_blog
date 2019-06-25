@@ -87,7 +87,6 @@ const options = {
 	}
 };
 const BlogPost: React.SFC<BlogPostProps> = function Template(props) {
-	console.log('content', grabContent(props));
 	return (
 		<div className={styles.center}>
 			<div className={styles.margin}>
