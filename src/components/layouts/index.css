@@ -1,3 +1,4 @@
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -600,25 +601,25 @@ code {
   padding-top: 0.2em;
   padding-bottom: 0.2em;
 }
-pre code {
-  background: none;
-  line-height: 1.42;
-}
-code:before,
-code:after,
-tt:before,
-tt:after {
-  letter-spacing: -0.2em;
-  content: " ";
-}
-pre code:before,
-pre code:after,
-pre tt:before,
-pre tt:after {
-  content: "";
-}
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
   }
+}
+
+code {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
 }
