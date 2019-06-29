@@ -71,13 +71,8 @@ module.exports = {
 				develop: true, // Enable while using `gatsby develop`
 				// tailwind: true, // Enable tailwindcss support
 				whitelist: ['whitelist'], // Don't remove this selector
-<<<<<<< HEAD
 				ignore: ['prism-solarizedlight.css', 'prism-line-numbers.css'] // Ignore files/folders
 				// purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
-=======
-				ignore: ['/ignored.css', 'prismjs/', 'semantic-ui-css/'] // Ignore files/folders
-				purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
->>>>>>> Fixes
 			}
 		}
 	]
