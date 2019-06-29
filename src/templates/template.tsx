@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { INLINES, BLOCKS, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { graphql } from 'gatsby';
 import { slice, head, prop, pipe } from 'ramda';
@@ -61,6 +61,13 @@ const options = {
 		[MARKS.CODE]: (node) => {
 			console.log(node);
 			return <pre>{node.value}</pre>;
+		},
+		[INLINES.HYPERLINK]: (node, next) => {
+			return `<a href="${node.data.uri}">${next(node.content)}</a>`;
+		},
+		[INLINES.ENTRY_HYPERLINK]: (node, next) => {
+			// TODO figure out how to use gatsby link
+			return `<a href=''>${next(node.content)}</a>`;
 		},
 		[BLOCKS.EMBEDDED_ASSET]: (node) => {
 			const { title, description, file } = node.data.target.fields;
