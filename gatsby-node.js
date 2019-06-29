@@ -2,35 +2,40 @@ const { forEach, split, toLower, join, compose } = require('ramda');
 const path = require('path');
 const slash = require('slash');
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-	const { createPage } = boundActionCreators;
+exports.createPages = ({ graphql, actions }) => {
+	const { createPage } = actions;
 	return new Promise((resolve, reject) => {
 		graphql(`
 			{
-				allMarkdownRemark {
+				allContentfulPost {
 					edges {
 						node {
-							html
-							frontmatter {
-								path
-								title
-								date
-								tags
-
+							title
+							subHeader
+							content {
+								content
 							}
+							id
 						}
 					}
 				}
 			}
 		`).then((result) => {
 			const productTemplate = path.resolve(`src/templates/template.tsx`);
-			forEach(({ node }) => {
+			forEach(({ node, ...other }) => {
 				createPage({
-					path: node.frontmatter.path,
-					component: slash(productTemplate)
+					path: toPath(node.title),
+					component: slash(productTemplate),
+					context: {
+						title: node.title
+					}
 				});
-			}, result.data.allMarkdownRemark.edges);
+			}, result.data.allContentfulPost.edges);
 			resolve();
 		});
 	});
 };
+
+function toPath(title) {
+	return title.replace(/ /gm, '-').toLowerCase();
+}
