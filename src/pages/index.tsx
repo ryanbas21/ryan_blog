@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Anchor, Nav } from 'grommet';
 import { Github, Linkedin, Twitter } from 'grommet-icons';
 import { StaticQuery, graphql } from 'gatsby';
-import Loading from '../components/loading';
 import { map } from 'ramda';
 import { anchor, container, fadeIn } from './index.module.css'
 import Card from '../components/card';
