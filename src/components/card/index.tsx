@@ -23,14 +23,6 @@ const Cards: React.SFC<CardProps> = function CardsComp(props) {
 			<Card.Content>
 				<Card.Header content={title} />
 				<Card.Meta content={date} />
-				<Card.Description>
-					<div
-						dangerouslySetInnerHTML={{
-							__html: contentLength + '...'
-						}}
-					/>
-				</Card.Description>
-      <Card.Extra><Tags tags={tags}/></Card.Extra>
 			</Card.Content>
 			<Card.Content extra>
 				<Tags tags={tags} />
