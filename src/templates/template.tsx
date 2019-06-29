@@ -53,14 +53,11 @@ const document = (content) => ({
 	data: {},
 	content
 });
-
 const options = {
-	renderMark: {
-		[MARKS.CODE]: (text) => {
-      return <div><pre className={`${styles.codeblocks} ${styles['gatsby-highlight']}`}>{text}</pre></div>;
+	renderNode: {
+		[MARKS.CODE]: (node) => {
+			return <pre>{node.value}</pre>;
 		},
-  },
-  renderNode: {
 		[INLINES.HYPERLINK]: (node, next) => {
 			return `<a href="${node.data.uri}">${next(node.content)}</a>`;
 		},
