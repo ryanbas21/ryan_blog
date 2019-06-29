@@ -51,7 +51,9 @@
 		"typography": "^0.16.19",
 		"typography-theme-grand-view": "^0.15.10"
 	},
-	"keywords": ["gatsby"],
+	"keywords": [
+		"gatsby"
+	],
 	"license": "MIT",
 	"scripts": {
 		"build": "gatsby build",
@@ -93,7 +95,10 @@
 		}
 	},
 	"lint-staged": {
-		"*.{ts, tsx, js,json}": ["prettier --write", "git add"]
+		"*.{ts, tsx, js,json}": [
+			"prettier --write",
+			"git add"
+		]
 	},
 	"repository": {
 		"type": "git",
