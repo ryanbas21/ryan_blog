@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 import { Link } from 'gatsby';
 import { pipe, length, always, lt, ifElse, slice } from 'ramda';
-import Tag from '../blog-tags';
+import Tags from '../blog-tags/index.tsx';
 
 interface CardProps {
 	id: string;
@@ -33,17 +33,9 @@ const Cards: React.SFC<CardProps> = function CardsComp(props) {
 			<Card.Content>
 				<Card.Header content={title} />
 				<Card.Meta content={date} />
-				<Card.Description>
-					<div
-						dangerouslySetInnerHTML={{
-							__html: contentLength + '...'
-						}}
-					/>
-				</Card.Description>
-      <Card.Extra><Tags tags={tags}/></Card.Extra>
 			</Card.Content>
 			<Card.Content extra>
-				<Tag tags={tags} />
+				<Tags tags={tags} />
 			</Card.Content>
 		</Card>
 	);
