@@ -4,6 +4,10 @@
 	"version": "2.1.0",
 	"author": "Ryan Basmajian",
 	"dependencies": {
+		"@contentful/gatsby-transformer-contentful-richtext": "^13.1.0",
+		"@contentful/rich-text-react-renderer": "^13.2.0",
+		"contentful": "^7.8.0",
+		"dotenv": "^8.0.0",
 		"gatsby": "^2.3.25",
 		"gatsby-link": "^2.0.16",
 		"gatsby-plugin-manifest": "^2.0.29",
@@ -14,10 +18,12 @@
 		"gatsby-plugin-robots-txt": "^1.4.0",
 		"gatsby-plugin-sharp": "^2.0.35",
 		"gatsby-plugin-sitemap": "^2.0.12",
+		"gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.1",
 		"gatsby-remark-copy-linked-files": "^2.0.11",
 		"gatsby-remark-images": "^3.0.10",
 		"gatsby-remark-prismjs": "^3.2.8",
 		"gatsby-remark-smartypants": "^2.0.9",
+		"gatsby-source-contentful": "^2.1.1",
 		"gatsby-source-filesystem": "^2.0.29",
 		"gatsby-transformer-remark": "^2.3.8",
 		"postcss-browser-reporter": "^0.5.0",
@@ -36,11 +42,14 @@
 		"typography": "^0.16.19",
 		"typography-theme-grand-view": "^0.15.10"
 	},
-	"keywords": ["gatsby"],
+	"keywords": [
+		"gatsby"
+	],
 	"license": "MIT",
 	"scripts": {
 		"build": "gatsby build",
 		"develop": "gatsby develop",
+		"test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage --accountToken PjZdGT9mP8cBpb5x5GVy --username ryanbas21 --projectName eric_blog",
 		"format": "prettier --write 'src/**/*.js'",
 		"test": "jest --coverage && codecov",
 		"test:watch": "jest --watchAll"
@@ -76,7 +85,10 @@
 		}
 	},
 	"lint-staged": {
-		"*.{ts, tsx, js,json}": ["prettier --write", "git add"]
+		"*.{ts, tsx, js,json}": [
+			"prettier --write",
+			"git add"
+		]
 	},
 	"repository": {
 		"type": "git",

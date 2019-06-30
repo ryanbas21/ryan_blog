@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 import { Link } from 'gatsby';
 import { pipe, length, always, lt, ifElse, slice } from 'ramda';
-import Tag from '../blog-tags';
+import Tags from '../blog-tags/index.tsx';
 
 interface CardProps {
 	id: string;
@@ -14,35 +14,18 @@ interface CardProps {
 	media?: any;
 	style: { margin: number };
 }
-const lengthLessThan100 = pipe(
-	length,
-	lt(100)
-);
-const sliceFirst100 = slice(0, 100);
 
+const sliceDate = slice(0, 10);
 const Cards: React.SFC<CardProps> = function CardsComp(props) {
 	const { path, style, content, tags, title, date } = props;
-	const contentLength = ifElse(
-		lengthLessThan100,
-		sliceFirst100,
-		always('Click to Read')
-	)(content);
-
 	return (
 		<Card fluid style={style} as={Link} to={path}>
 			<Card.Content>
 				<Card.Header content={title} />
 				<Card.Meta content={date} />
-				<Card.Description>
-					<div
-						dangerouslySetInnerHTML={{
-							__html: contentLength + '...'
-						}}
-					/>
-				</Card.Description>
 			</Card.Content>
 			<Card.Content extra>
-				<Tag tags={tags} />
+				<Tags tags={tags} />
 			</Card.Content>
 		</Card>
 	);
