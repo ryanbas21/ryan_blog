@@ -2,7 +2,7 @@ import * as React from 'react';
 import { INLINES, BLOCKS, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { graphql } from 'gatsby';
-import { slice, head, prop, pipe } from 'ramda';
+import { split, T, cond, slice, head, prop, pipe } from 'ramda';
 import styles from './page.module.css';
 
 interface BlogPostProps {
@@ -24,6 +24,7 @@ const contentfulPostProp = prop('allContentfulPost');
 const edges = prop('edges');
 const contentProp = prop('content');
 const valueProp = prop('value');
+
 const grabUpToNode = pipe(
 	dataProp,
 	contentfulPostProp,
@@ -31,6 +32,7 @@ const grabUpToNode = pipe(
 	head,
 	nodeProp
 );
+
 const grabContent = pipe(
 	grabUpToNode,
 	contentProp,
@@ -66,24 +68,31 @@ const options = {
 		[BLOCKS.EMBEDDED_ASSET]: (node) => {
 			const { title, description, file } = node.data.target.fields;
 			const mimeType = file['en-US'].contentType;
-			const mimeGroup = mimeType.split('/')[0];
+			const mimeGroup = pipe(
+				split('/'),
+				head
+			)(mimeType);
 
-			switch (mimeGroup) {
-				case 'image':
-					return (
+			return cond[
+				([
+					equals('image'),
+					() => (
 						<img
 							title={title ? title['en-US'] : null}
 							alt={description ? description['en-US'] : null}
 							src={file['en-US'].url}
 						/>
-					);
-				default:
-					return (
+					)
+				],
+				[
+					T,
+					() => (
 						<span style={{ backgroundColor: 'red', color: 'white' }}>
 							{mimeType} embedded asset{' '}
 						</span>
-					);
-			}
+					)
+				])
+			](mimeGroup);
 		}
 	}
 };
