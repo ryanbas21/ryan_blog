@@ -69,7 +69,6 @@ const options = {
 			const { title, description, file } = node.data.target.fields;
 			const mimeType = file['en-US'].contentType;
 			const mimeGroup = pipe(
-				prop('split'),
 				split('/'),
 				head
 			)(mimeType);
