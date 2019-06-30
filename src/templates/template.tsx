@@ -2,7 +2,7 @@ import * as React from 'react';
 import { INLINES, BLOCKS, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { graphql } from 'gatsby';
-import { slice, head, prop, pipe } from 'ramda';
+import { equals, split, T, cond, slice, head, prop, pipe } from 'ramda';
 import styles from './page.module.css';
 
 interface BlogPostProps {
@@ -24,31 +24,28 @@ const contentfulPostProp = prop('allContentfulPost');
 const edges = prop('edges');
 const contentProp = prop('content');
 const valueProp = prop('value');
-const grabContent = pipe(
+
+const grabUpToNode = pipe(
 	dataProp,
 	contentfulPostProp,
 	edges,
 	head,
-	nodeProp,
+	nodeProp
+);
+
+const grabContent = pipe(
+	grabUpToNode,
 	contentProp,
 	contentProp,
 	JSON.parse,
 	contentProp
 );
 const grabTitle = pipe(
-	dataProp,
-	contentfulPostProp,
-	edges,
-	head,
-	nodeProp,
+	grabUpToNode,
 	titleProp
 );
 const grabDate = pipe(
-	dataProp,
-	contentfulPostProp,
-	edges,
-	head,
-	nodeProp,
+	grabUpToNode,
 	dateProp
 );
 const document = (content) => ({
@@ -71,24 +68,36 @@ const options = {
 		[BLOCKS.EMBEDDED_ASSET]: (node) => {
 			const { title, description, file } = node.data.target.fields;
 			const mimeType = file['en-US'].contentType;
-			const mimeGroup = mimeType.split('/')[0];
-
-			switch (mimeGroup) {
-				case 'image':
-					return (
-						<img
-							title={title ? title['en-US'] : null}
-							alt={description ? description['en-US'] : null}
-							src={file['en-US'].url}
-						/>
-					);
-				default:
-					return (
-						<span style={{ backgroundColor: 'red', color: 'white' }}>
-							{mimeType} embedded asset{' '}
-						</span>
-					);
-			}
+			const mimeGroup = pipe(
+				split('/'),
+				head
+			);
+			return pipe(
+				mimeGroup,
+				cond([
+					[
+						equals('image'),
+						(mimeType) => (
+							<div>
+								{console.log('here')}
+								<img
+									title={title ? title['en-US'] : null}
+									alt={description ? description['en-US'] : null}
+									src={file['en-US'].url}
+								/>
+							</div>
+						)
+					],
+					[
+						T,
+						() => (
+							<span style={{ backgroundColor: 'red', color: 'white' }}>
+								{mimeType} embedded asset{' '}
+							</span>
+						)
+					]
+				])
+			)(mimeType);
 		}
 	}
 };
@@ -99,7 +108,9 @@ const BlogPost: React.SFC<BlogPostProps> = function Template(props) {
 				<h2>{grabTitle(props)} </h2>
 				<i>{grabDate(props)}</i>
 				<div className={styles.postMargin} />
-				{documentToReactComponents(document(grabContent(props)), options)}
+				<div className={styles.post}>
+					{documentToReactComponents(document(grabContent(props)), options)}
+				</div>
 			</div>
 		</div>
 	);
