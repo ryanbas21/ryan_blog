@@ -71,28 +71,32 @@ const options = {
 			const mimeGroup = pipe(
 				split('/'),
 				head
-			)(mimeType);
-
-			return cond[
-				([
-					equals('image'),
-					() => (
-						<img
-							title={title ? title['en-US'] : null}
-							alt={description ? description['en-US'] : null}
-							src={file['en-US'].url}
-						/>
-					)
-				],
-				[
-					T,
-					() => (
-						<span style={{ backgroundColor: 'red', color: 'white' }}>
-							{mimeType} embedded asset{' '}
-						</span>
-					)
+			);
+			return pipe(
+				mimeGroup,
+				cond([
+					[
+						equals('image'),
+						(mimeType) => (
+							<div>
+								<img
+									title={title ? title['en-US'] : null}
+									alt={description ? description['en-US'] : null}
+									src={file['en-US'].url}
+								/>
+							</div>
+						)
+					],
+					[
+						T,
+						() => (
+							<span style={{ backgroundColor: 'red', color: 'white' }}>
+								{mimeType} embedded asset{' '}
+							</span>
+						)
+					]
 				])
-			](mimeGroup);
+			)(mimeType);
 		}
 	}
 };
