@@ -24,31 +24,26 @@ const contentfulPostProp = prop('allContentfulPost');
 const edges = prop('edges');
 const contentProp = prop('content');
 const valueProp = prop('value');
-const grabContent = pipe(
+const grabUpToNode = pipe(
 	dataProp,
 	contentfulPostProp,
 	edges,
 	head,
-	nodeProp,
+	nodeProp
+);
+const grabContent = pipe(
+	grabUpToNode,
 	contentProp,
 	contentProp,
 	JSON.parse,
 	contentProp
 );
 const grabTitle = pipe(
-	dataProp,
-	contentfulPostProp,
-	edges,
-	head,
-	nodeProp,
+	grabUpToNode,
 	titleProp
 );
 const grabDate = pipe(
-	dataProp,
-	contentfulPostProp,
-	edges,
-	head,
-	nodeProp,
+	grabUpToNode,
 	dateProp
 );
 const document = (content) => ({
