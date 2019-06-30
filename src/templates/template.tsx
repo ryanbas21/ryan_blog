@@ -79,7 +79,6 @@ const options = {
 						equals('image'),
 						(mimeType) => (
 							<div>
-								{console.log('here')}
 								<img
 									title={title ? title['en-US'] : null}
 									alt={description ? description['en-US'] : null}
