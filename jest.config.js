@@ -4,6 +4,7 @@ module.exports = {
 	transform: {
 		'^.+\\.tsx?$': 'ts-jest'
 	},
+	setupFiles: ['<rootDir>/.jest/register-context.js'],
 	testRegex: '((\\.|/)(test|spec))\\.tsx?$',
 	moduleNameMapper: {
 		'\\.(css|less)$': '<rootDir>/src/utils/style.mock.js'
