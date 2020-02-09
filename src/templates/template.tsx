@@ -3,7 +3,8 @@ import { INLINES, BLOCKS, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { graphql } from 'gatsby';
 import { equals, split, T, cond, slice, head, prop, pipe } from 'ramda';
-import styles from './page.module.css';
+import * as styles from './page.module.css';
+import 'prism-theme-night-owl';
 
 interface BlogPostProps {
 	data: {
@@ -56,7 +57,7 @@ const document = (content) => ({
 const options = {
 	renderNode: {
 		[MARKS.CODE]: (node) => {
-			return <pre>{node.value}</pre>;
+			return <pre className={styles.preblocks}>{node.value}</pre>;
 		},
 		[INLINES.HYPERLINK]: (node, next) => {
 			return `<a href="${node.data.uri}">${next(node.content)}</a>`;
