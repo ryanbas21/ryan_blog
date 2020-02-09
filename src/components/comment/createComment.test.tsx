@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Grommet } from 'grommet';
 import CreateComment from './createComment';
 import {
 	render,
@@ -14,7 +15,9 @@ test('Should submit the reply', () => {
 	const change = jest.fn();
 
 	const { getByText } = render(
-		<CreateComment onReply={fn} replyChange={change} />
+    <Grommet>
+      <CreateComment onReply={fn} replyChange={change} />
+    </Grommet>
 	);
 	const text = getByText('Add Reply');
 	fireEvent.click(text);
@@ -27,7 +30,9 @@ test('Should handle onchange', () => {
 	const change = jest.fn();
 
 	const { getByTestId } = render(
-		<CreateComment onReply={fn} replyChange={change} />
+    <Grommet>
+      <CreateComment onReply={fn} replyChange={change} />
+    </Grommet>
 	);
 	const comment = getByTestId('textbox');
 

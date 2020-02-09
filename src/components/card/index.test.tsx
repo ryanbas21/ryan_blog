@@ -1,5 +1,6 @@
 import React from 'react';
 import DummyPost from './dummy-post';
+import { Grommet } from 'grommet'
 import {
 	render,
 	fireEvent,
@@ -12,7 +13,7 @@ import Card from './';
 
 afterEach(cleanup);
 
-test.skip('Cards Component View Tests', () => {
+test('Cards Component View Tests', () => {
 	(global as any).___loader = {
 		enqueue: jest.fn()
 	};
@@ -25,12 +26,9 @@ test.skip('Cards Component View Tests', () => {
 		tags: 'First, Post',
 		style: { margin: 5 }
 	};
-	const { getByText } = render(<Card {...props} />);
-	const expected =
-		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque urna est, euismod quis feugiat vita...';
+  const { getByText } = render(<Grommet><Card {...props} /></Grommet>);
 
 	expect(getByText(props.title).innerHTML).toBe(props.title);
 	expect(getByText(props.date).innerHTML).toBe(props.date);
-	expect(getByText(expected).innerHTML).toBe(expected);
 	expect(getByText(props.date).innerHTML).toBe(props.date);
 });
