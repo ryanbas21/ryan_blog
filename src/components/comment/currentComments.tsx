@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Comment } from 'semantic-ui-react';
+import { Box, Header, Main } from 'grommet';
 
 export interface CurrentCommentProps {
 	user: string;
@@ -8,14 +8,13 @@ export interface CurrentCommentProps {
 	replyChange: (e: React.FormEvent<HTMLInputElement>) => any;
 	onReply: (...args: any[]) => any;
 }
+
 const CurrentComments: React.SFC<CurrentCommentProps> = (props) => (
-	<Comment.Group key={props.user + props.date + props.content}>
-		<Comment.Author as="label">{props.user}</Comment.Author>
-		<Comment.Metadata>
-			<div>{props.date}</div>
-		</Comment.Metadata>
-		<Comment.Text content={props.content} />
-	</Comment.Group>
+	<Box key={props.user + props.date + props.content}>
+		<Header as="label">{props.user}</Header>
+		<Header>{props.date}</Header>
+    <Main >{props.content}</Main>
+	</Box>
 );
 
 export default CurrentComments;

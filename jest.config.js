@@ -8,6 +8,8 @@ module.exports = {
 	moduleNameMapper: {
 		'\\.(css|less)$': '<rootDir>/src/utils/style.mock.js'
 	},
-
+  globals: {
+    __PATH_PREFIX__: ``,
+  },
 	moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
 };
