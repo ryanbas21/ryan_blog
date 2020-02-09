@@ -14,6 +14,7 @@ function mapTags(type: string): React.ReactNode {
 		</Label>
 	);
 }
+
 const renderTags: (tags) => React.ReactNode = pipe(
 	split(','),
 	map(mapTags)

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Comment } from 'semantic-ui-react';
 
-interface CurrentCommentProps {
+export interface CurrentCommentProps {
 	user: string;
 	date: string;
 	content: string;
