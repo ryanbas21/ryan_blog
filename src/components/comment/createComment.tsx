@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Button, Form, FormField, TextArea} from 'grommet';
+import { Chat } from 'grommet-icons'
 
 interface CreateProps {
 	onReply: (a: React.MouseEvent<HTMLButtonElement>) => void;
@@ -12,19 +13,19 @@ const CreateComment: React.SFC<CreateProps> = ({
 	commentText
 }) => (
 	<Form>
-		<Form.TextArea
-			data-testid="textbox"
-			value={commentText}
-			onChange={replyChange}
-		/>
+    <FormField label="Comment">
+     <TextArea
+			  data-testid="textbox"
+			  value={commentText}
+			  onChange={replyChange}
+     />
+    </FormField>
 		<Button
 			onClick={onReply}
 			id="submit"
-			content="Add Reply"
-			labelPosition="left"
-			icon="edit"
-			primary
-		/>
+      label="Add Reply"
+      icon={<Chat />}
+	  />
 	</Form>
 );
 

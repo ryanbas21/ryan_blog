@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Favorite } from 'grommet-icons'
 import { ifElse, equals, thunkify } from 'ramda';
 import { Icon } from 'semantic-ui-react';
 import styles from './index.module.css';
@@ -15,16 +16,13 @@ const Likes: React.SFC<LikesProps> = (props) => {
 			{ifElse(
 				equalsZero,
 				() => (
-					<Icon
-						size={'large'}
-						name={'heart outline'}
+					<Favorite
 						data-testid="likes-button"
 						onClick={changeLikes(likes, setLikes)}
 					/>
 				),
 				() => (
-					<Icon
-						size={'large'}
+					<Favorite
 						name={'heart'}
 						color={'red'}
 						data-testid="hearted-like"

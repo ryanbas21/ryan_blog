@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { Header, Comment } from 'semantic-ui-react';
+import { Header } from 'grommet';
 
 const CommentHeader: React.SFC<{}> = () => (
-	<Comment.Group>
-		<Header as="h3" dividing>
+	<Header>
 			Comments
-		</Header>
-	</Comment.Group>
+  </Header>
 );
 
 export default CommentHeader;
