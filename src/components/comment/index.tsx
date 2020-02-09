@@ -3,7 +3,7 @@ import { Comment } from 'semantic-ui-react';
 import { curry, thunkify, pipe, propOr, map, concat } from 'ramda';
 import CommentHeader from './commentHeader';
 import CreateComment from './createComment';
-import CurrentComments from './currentComments';
+import CurrentComments, { CurrentCommentProps } from './currentComments';
 
 const onReply = thunkify(function(commentsState, setComments): void {
 	const date = new Date(Date.now()).toString();
@@ -52,7 +52,7 @@ const Comments: React.SFC<CommentProps> = (props) => {
 		content: '',
 		date: ''
 	});
-	const renderComments = pipe(
+  const renderComments: React.SFC<CurrentCommentProps> = pipe(
 		propOr([], 'comments'),
 		map((comment: CommentData) => (
 			<CurrentComments

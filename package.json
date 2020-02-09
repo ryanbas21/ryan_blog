@@ -3,6 +3,7 @@
 	"description": "Blog Site",
 	"version": "2.1.0",
 	"author": "Ryan Basmajian",
+	"sideEffects": false,
 	"dependencies": {
 		"@contentful/gatsby-transformer-contentful-richtext": "^13.1.0",
 		"@contentful/rich-text-react-renderer": "^13.2.0",
@@ -42,9 +43,7 @@
 		"typography": "^0.16.19",
 		"typography-theme-grand-view": "^0.15.10"
 	},
-	"keywords": [
-		"gatsby"
-	],
+	"keywords": ["gatsby"],
 	"license": "MIT",
 	"scripts": {
 		"build": "gatsby build",
@@ -85,10 +84,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.{ts, tsx, js,json}": [
-			"prettier --write",
-			"git add"
-		]
+		"*.{ts, tsx, js,json}": ["prettier --write", "git add"]
 	},
 	"repository": {
 		"type": "git",
