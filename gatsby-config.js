@@ -10,7 +10,7 @@ module.exports = {
 		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-typescript`,
 		`gatsby-plugin-sitemap`,
-    `gatsby-plugin-styled-components`,
+		`gatsby-plugin-styled-components`,
 		{
 			resolve: `gatsby-source-contentful`,
 			options: {
@@ -63,7 +63,7 @@ module.exports = {
 				develop: true, // Enable while using `gatsby develop`
 				// tailwind: true, // Enable tailwindcss support
 				whitelist: ['whitelist'], // Don't remove this selector
-				ignore: [] // Ignore files/folders
+				ignore: ['prism-solarizedlight.css', 'prism-line-numbers.css'] // Ignore files/folders
 				// purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
 			}
 		}

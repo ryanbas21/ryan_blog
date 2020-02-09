@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import { Box, Grommet, Heading } from 'grommet';
+import { Box, Grommet, Header } from 'grommet';
 import './index.css';
 const theme = {
   "global": {
@@ -875,7 +875,7 @@ const Layout = ({ children }) => (
       direction="column"
       background="white"
     >
-      <Heading>Posts</Heading>
+      <Header>Posts</Header>
 			{children}
 		</Box>
 	</Grommet>

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Comment } from 'semantic-ui-react';
+import { Box } from 'grommet';
 import { curry, thunkify, pipe, propOr, map, concat } from 'ramda';
 import CommentHeader from './commentHeader';
 import CreateComment from './createComment';
 import CurrentComments, { CurrentCommentProps } from './currentComments';
 
-const onReply = thunkify(function(commentsState, setComments): void {
+export const onReply = thunkify(function(commentsState, setComments): void {
 	const date = new Date(Date.now()).toString();
 	const { comments, commentText } = commentsState;
 	setComments({
@@ -67,7 +67,7 @@ const Comments: React.SFC<CommentProps> = (props) => {
 	);
 	const { date, content } = commentsState;
 	return (
-		<Comment className={props.styles.comments}>
+		<Box className={props.styles.comments}>
 			<CommentHeader />
 			{renderComments(commentsState)}
 			<CreateComment
@@ -75,7 +75,7 @@ const Comments: React.SFC<CommentProps> = (props) => {
 				replyChange={replyChange(commentsState, setComments) as any}
 				onReply={() => onReply(commentsState, setComments)}
 			/>
-		</Comment>
+    </Box>
 	);
 };
 

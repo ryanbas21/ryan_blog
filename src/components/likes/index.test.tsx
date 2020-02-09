@@ -19,13 +19,5 @@ test('Should Click Like Button and increment Likes', () => {
 
 	fireEvent.click(likeButton);
 	const totalLikes = getByText('1');
-});
-
-test('When Like is Clicked Heart should turn red', () => {
-	const { getByText, getByTestId } = render(<Likes />);
-	const likeButton = getByTestId('likes-button');
-
-	fireEvent.click(likeButton);
-	const redLikeButton = getByTestId('hearted-like');
-	expect(redLikeButton.getAttribute('class')).toBe('red heart large icon');
+  expect(totalLikes).toBeTruthy();
 });

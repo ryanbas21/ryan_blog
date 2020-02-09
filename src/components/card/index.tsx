@@ -16,10 +16,10 @@ interface CardProps {
 
 const sliceDate = slice(0, 10);
 const Cards: React.SFC<CardProps> = function CardsComp(props) {
-	const { path, style, content, tags, title, date } = props;
+	const { path, style, title, date } = props;
 	return (
-		<Box style={style} as={Link} to={path} direction={"column"} align={'center'} alignSelf={'center'}>
-        <Header>{title}</Header>
+		<Box style={style} direction={"column"} align={'center'} alignSelf={'center'}>
+        <Header to={path} as={Link}>{title}</Header>
         <Stack>{date}</Stack>
 		</Box>
 	);
