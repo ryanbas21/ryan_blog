@@ -12,6 +12,7 @@
 		"dotenv": "^8.0.0",
 		"gatsby": "^2.3.25",
 		"gatsby-link": "^2.0.16",
+		"gatsby-plugin-google-analytics": "^2.1.35",
 		"gatsby-plugin-manifest": "^2.0.29",
 		"gatsby-plugin-offline": "^2.0.25",
 		"gatsby-plugin-postcss": "^2.0.7",
@@ -36,6 +37,7 @@
 		"postcss-cssnext": "^3.1.0",
 		"postcss-import": "^12.0.1",
 		"postcss-reporter": "^6.0.1",
+		"prism-theme-night-owl": "^1.2.0",
 		"prismjs": "^1.16.0",
 		"ramda": "^0.26.1",
 		"react": "^16.8.6",
@@ -49,9 +51,7 @@
 		"typography": "^0.16.19",
 		"typography-theme-grand-view": "^0.15.10"
 	},
-	"keywords": [
-		"gatsby"
-	],
+	"keywords": ["gatsby"],
 	"license": "MIT",
 	"scripts": {
 		"build": "gatsby build",
@@ -93,10 +93,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.{ts, tsx, js,json}": [
-			"prettier --write",
-			"git add"
-		]
+		"*.{ts, tsx, js,json}": ["prettier --write", "git add"]
 	},
 	"repository": {
 		"type": "git",
