@@ -1,7 +1,16 @@
-.container {
-  height: 100%;
+html {
+  background-color: #000000;
+  color: #046B99; 
 }
-.anchor {
-  margin: 30px;
+a {
   bottom: 0;
+  color: #00CFFF;
+
 }
+.container {
+  background-color: #1C304A;
+
+  width: 50%;
+  padding: 40px;
+}
+

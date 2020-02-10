@@ -1,0 +1,31 @@
+html {
+  height: 100%;
+  font-family: Arvo;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  background-color: #000000;
+
+  color: #B3EFFF
+
+}
+a {
+  color: #00CFFF;
+}
+/* 
+ * Purpose:
+ * Assign height: "100%" to
+ * html, body, #___gatsby &  
+ * div with role="group"
+*/
+
+body, #___gatsby {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+}
+
+div[role="group"][tabindex] {
+    height: 100%;
+}
