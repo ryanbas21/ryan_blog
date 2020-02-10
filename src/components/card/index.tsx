@@ -1,8 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Box, Header, Stack } from 'grommet'
 import { Link } from 'gatsby';
 import { pipe, length, always, lt, ifElse, slice } from 'ramda';
 
+const CustomBox = styled(Box)`
+  width: 100%;
+  padding: 10px;
+`
+const CustomStack = styled(Stack)`
+  color: #B3EFFF;
+`
 interface CardProps {
 	id: string;
 	path: string;
@@ -16,12 +24,12 @@ interface CardProps {
 
 const sliceDate = slice(0, 10);
 const Cards: React.SFC<CardProps> = function CardsComp(props) {
-	const { path, style, title, date } = props;
+	const { path, title, date } = props;
 	return (
-		<Box style={style} direction={"column"} align={'center'} alignSelf={'center'}>
-        <Header to={path} as={Link}>{title}</Header>
-        <Stack>{date}</Stack>
-		</Box>
+    <CustomBox direction={"column"} align={'center'} alignSelf={'center'}>
+        <Header to={`/${path}`} as={Link}>{title}</Header>
+        <CustomStack>{date}</CustomStack>
+		</CustomBox>
 	);
 };
 

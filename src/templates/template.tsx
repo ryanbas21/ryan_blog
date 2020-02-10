@@ -105,7 +105,7 @@ const BlogPost: React.SFC<BlogPostProps> = function Template(props) {
 	return (
 		<div className={styles.center}>
 			<div className={styles.margin}>
-				<h2>{grabTitle(props)} </h2>
+				<h2 className={styles.title}>{grabTitle(props)} </h2>
 				<i>{grabDate(props)}</i>
 				<div className={styles.postMargin} />
 				<div className={styles.post}>
