@@ -12,6 +12,12 @@ module.exports = {
 		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-styled-components`,
 		{
+			resolve: 'gatsby-plugin-html-attributes',
+			options: {
+				lang: 'en'
+			}
+		},
+		{
 			resolve: `gatsby-source-contentful`,
 			options: {
 				spaceId: process.env.SPACE_ID,
@@ -46,15 +52,15 @@ module.exports = {
 				cookieDomain: 'example.com'
 			}
 		},
-		{
-			resolve: `gatsby-source-contentful`,
-			options: {
-				spaceId: process.env.SPACE_ID,
-				// Learn about environment variables: https://gatsby.dev/env-vars
-				accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
-				host: `preview.contentful.com`
-			}
-		},
+		// {
+		// 	resolve: `gatsby-source-contentful`,
+		// 	options: {
+		// 		spaceId: process.env.SPACE_ID,
+		// 		// Learn about environment variables: https://gatsby.dev/env-vars
+		// 		accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
+		// 		host: `preview.contentful.com`
+		// 	}
+		// },
 		{
 			resolve: 'gatsby-plugin-robots-txt',
 			options: {
@@ -99,7 +105,7 @@ module.exports = {
 				develop: true, // Enable while using `gatsby develop`
 				// tailwind: true, // Enable tailwindcss support
 				whitelist: ['whitelist'], // Don't remove this selector
-				ignore: ['prism-solarizedlight.css', 'prism-line-numbers.css'] // Ignore files/folders
+				ignore: [] // Ignore files/folders
 			}
 		}
 	]

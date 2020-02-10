@@ -1,16 +1,9 @@
 import * as React from 'react';
-import { Anchor, Nav } from 'grommet';
-import { Github, Linkedin, Twitter } from 'grommet-icons';
 import { StaticQuery, graphql } from 'gatsby';
 import { map } from 'ramda';
-import { anchor, container, fadeIn } from './index.module.css'
+import { container } from './index.module.css'
 import Card from '../components/card';
 import Layout from '../components/layouts/index';
-{/* import { TransitionGroup } from 'react-transition-group'; */}
-
-const style = {
-	margin: 20
-};
 
 interface IndexProps {
 	title;
@@ -24,7 +17,6 @@ const Index: React.SFC<IndexProps> = function IndexComponent(props) {
 				{map(
 					({ node: { tags, id, title, subHeader } }) => (
 						<Card
-							style={style}
 							id={id}
 							path={toPath(title)}
 							key={id}
@@ -34,11 +26,7 @@ const Index: React.SFC<IndexProps> = function IndexComponent(props) {
 					),
 					props.allContentfulPost.edges
 				)}
-            <Nav direction="row" background="brand" pad="medium" className={anchor}>
-                <Anchor icon={<Github />} hoverIndicator href="http://github.com/ryanbas21" />
-                <Anchor icon={<Linkedin />} hoverIndicator href="https://www.linkedin.com/in/ryanbas21/" />
-                <Anchor icon={<Twitter />} hoverIndicator href="https://twitter.com/ryanbas21"/>
-            </Nav>
+            
 			</div>
 		</Layout>
 	);
