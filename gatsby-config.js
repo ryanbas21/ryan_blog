@@ -5,26 +5,6 @@ module.exports = {
 		siteUrl: `https://www.ryanbas.com`
 	},
 	plugins: [
-		`gatsby-plugin-sharp`,
-		`gatsby-plugin-postcss`,
-		`gatsby-plugin-react-helmet`,
-		`gatsby-plugin-typescript`,
-		`gatsby-plugin-sitemap`,
-		`gatsby-plugin-styled-components`,
-		{
-			resolve: 'gatsby-plugin-html-attributes',
-			options: {
-				lang: 'en'
-			}
-		},
-		{
-			resolve: `gatsby-source-contentful`,
-			options: {
-				spaceId: process.env.SPACE_ID,
-				// Learn about environment variables: https://gatsby.dev/env-vars
-				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-			}
-		},
 		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {
@@ -52,15 +32,30 @@ module.exports = {
 				cookieDomain: 'example.com'
 			}
 		},
-		// {
-		// 	resolve: `gatsby-source-contentful`,
-		// 	options: {
-		// 		spaceId: process.env.SPACE_ID,
-		// 		// Learn about environment variables: https://gatsby.dev/env-vars
-		// 		accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
-		// 		host: `preview.contentful.com`
-		// 	}
-		// },
+		`gatsby-plugin-sharp`,
+		`gatsby-plugin-postcss`,
+		`gatsby-plugin-react-helmet`,
+		`gatsby-plugin-typescript`,
+		`gatsby-plugin-sitemap`,
+		`gatsby-plugin-styled-components`,
+		{
+			resolve: 'gatsby-plugin-html-attributes',
+			options: {
+				lang: 'en'
+			}
+		},
+		{
+			resolve: `gatsby-source-contentful`,
+			options: {
+				spaceId: process.env.SPACE_ID,
+				// Learn about environment variables: https://gatsby.dev/env-vars
+				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+			}
+		},
+		{
+			resolve: '@bundle-analyzer/gatsby-plugin',
+			options: { token: process.env.BUNDLE_ANALYZER_TOKEN }
+		},
 		{
 			resolve: 'gatsby-plugin-robots-txt',
 			options: {
