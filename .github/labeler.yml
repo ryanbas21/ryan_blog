@@ -1,0 +1,22 @@
+# Add 'repo' label to any root file changes
+repo:
+  - ./*
+  
+components:
+  - ./src/components/*
+  
+pages:
+  - ./src/pages/*
+
+styles:
+  - ./src/styles/*
+
+utils:
+  - ./src/utils/*
+
+static:
+  - ./static/*
+
+# Add 'test' label to any change to *.spec.js files within the source dir
+test:
+  - src/**/*.spec.js
