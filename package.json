@@ -52,9 +52,7 @@
 		"typography": "^0.16.19",
 		"typography-theme-grand-view": "^0.15.10"
 	},
-	"keywords": [
-		"gatsby"
-	],
+	"keywords": ["gatsby"],
 	"license": "MIT",
 	"scripts": {
 		"build": "gatsby build",
@@ -65,6 +63,7 @@
 		"test:watch": "jest --watchAll"
 	},
 	"devDependencies": {
+		"@bundle-analyzer/gatsby-plugin": "^0.5.1",
 		"@types/jest": "^23.3.14",
 		"@types/ramda": "^0.26.7",
 		"@types/react": "^16.8.14",
@@ -96,10 +95,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.{ts, tsx, js,json}": [
-			"prettier --write",
-			"git add"
-		]
+		"*.{ts, tsx, js,json}": ["prettier --write", "git add"]
 	},
 	"repository": {
 		"type": "git",
